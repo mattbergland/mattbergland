@@ -21,6 +21,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // Newsletter subscription form
+    const subscribeForm = document.querySelector('.subscribe-form');
+    if (subscribeForm) {
+        subscribeForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = this.querySelector('input[type="email"]').value;
+            alert('Thanks for subscribing! We\'ll be in touch soon.');
+            this.reset();
+        });
+    }
+
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
