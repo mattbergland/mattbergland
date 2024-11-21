@@ -21,23 +21,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ConvertKit form success message handling
-    window.addEventListener('message', e => {
-        if (e.data.type === 'convertkit:form:success') {
-            const form = document.querySelector('.formkit-form');
-            if (form) {
-                const successMessage = form.getAttribute('data-success');
-                if (successMessage) {
-                    const messageDiv = document.createElement('div');
-                    messageDiv.className = 'formkit-alert formkit-alert-success';
-                    messageDiv.innerHTML = successMessage;
-                    form.innerHTML = '';
-                    form.appendChild(messageDiv);
-                }
-            }
-        }
-    });
-
     // Smooth scrolling for navigation links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
