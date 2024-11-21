@@ -190,15 +190,78 @@ main {
 /* Newsletter Section */
 .newsletter {
     padding: 2rem;
-    margin: 2rem 0;
-    background-color: #f8f9fa;
-    border-radius: 8px;
+    margin: 2rem auto;
+    max-width: 700px;
 }
 
 .newsletter-content {
     max-width: 600px;
     margin: 0 auto;
     text-align: center;
+}
+
+.newsletter-content p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    color: #555;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.email-input {
+    flex: 1;
+    min-width: 200px;
+    max-width: 400px;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.email-input:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.submit-button {
+    padding: 0.8rem 1.5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+.formkit-form {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+
+.formkit-form:hover {
+    transform: translateY(-2px);
+}
+
+.formkit-input:focus {
+    outline: none;
+    border-color: rgb(255, 120, 73) !important;
+    box-shadow: 0 0 0 3px rgba(255, 120, 73, 0.2);
+}
+
+.formkit-submit:hover {
+    background-color: rgb(235, 100, 53) !important;
+    transform: translateY(-1px);
 }
 
 /* Guides Section */
