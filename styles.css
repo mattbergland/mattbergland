@@ -952,7 +952,7 @@ footer {
         justify-content: center;
     }
     
-    /* Guides section */
+    /* Guides section - Enhanced mobile implementation */
     .guides {
         padding: 0 4%;
     }
@@ -960,19 +960,26 @@ footer {
     .guides-container {
         grid-template-columns: 1fr;
         gap: 1.5rem;
+        width: 100%;
+        max-width: 100%;
     }
     
     .guide-card {
         padding: 1.25rem;
         min-height: 44px;
+        width: 100%;
+        box-sizing: border-box;
+        margin: 0;
     }
     
     .guide-card h3 {
         font-size: 1.1rem;
+        margin-bottom: 0.5rem;
     }
     
     .guide-card .guide-header p {
         font-size: 0.85rem;
+        line-height: 1.4;
     }
     
     /* Social section */
