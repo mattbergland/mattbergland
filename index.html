@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-    <title>mattberg.land - Startup Ideas & Resources</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>mattberg.land - Startup Ideas &amp; Resources</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +15,10 @@
     <header>
         <nav>
             <a href="index.html" class="nav-logo">mattberg.land</a>
-            <a href="about.html" class="nav-link">About Me</a>
+            <div class="nav-links">
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="#blog" class="nav-link">Blog</a>
+            </div>
         </nav>
     </header>
 
@@ -26,109 +30,170 @@
                 </div>
                 <div class="bio-text">
                     <p class="bio-name">Matt Bergland</p>
-                    <p class="bio-title">Community @ <a href="https://www.codeium.com" target="_blank">Codeium</a></p>
-                    <p class="bio-location">San Francisco, CA 📍</p>
-                    <p class="bio-description">I build communities for a living.</p>
+                    <p class="bio-title">Marketing @ <a href="https://cognition.ai" target="_blank">Cognition</a></p>
+                    <p class="bio-location">San Francisco, CA</p>
+                    <p class="bio-description">Good things tend to happen in person.</p>
                 </div>
                 <div class="social-links">
-                    <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://x.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                    <a href="https://youtube.com/@mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="https://linkedin.com/in/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://instagram.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
             <div class="hero">
+                <div class="sticky-tabs" role="tablist" aria-label="Focus area">
+                    <button class="sticky-tab sticky-tab--community active" role="tab" aria-selected="true" data-tab="community">
+                        <span class="tab-label">Community</span>
+                        <span class="tab-micro">Relationship engine</span>
+                    </button>
+                    <button class="sticky-tab sticky-tab--field" role="tab" aria-selected="false" data-tab="field">
+                        <span class="tab-label">Field</span>
+                        <span class="tab-micro">Pipeline acceleration</span>
+                    </button>
+                    <button class="sticky-tab sticky-tab--events" role="tab" aria-selected="false" data-tab="events">
+                        <span class="tab-label">Events</span>
+                        <span class="tab-micro">Experiential impact</span>
+                    </button>
+                </div>
                 <div class="hero-text">
-                    <h1>Transform customers into fans<br>via <span class="highlight">community-driven growth.</span></h1>
+                    <h1 id="hero-headline">Turn users into fans<br>via <span class="highlight" id="hero-highlight">community-driven growth.</span></h1>
+                    <p class="hero-subhead" id="hero-subhead">Build owned audiences that deepen loyalty, retention, and long-term advocacy.</p>
                 </div>
                 <div class="contact-section">
-                    <a href="mailto:hello@mattberg.land" class="contact-button">
-                        Schedule a Chat 👋
+                    <a href="mailto:hello@mattberg.land" class="contact-button" id="hero-cta">
+                        Schedule a Chat
                     </a>
                 </div>
             </div>
+            <script>
+                (function() {
+                    var tabs = {
+                        community: {
+                            before: 'Turn users into fans',
+                            highlight: 'community-driven growth.',
+                            subhead: 'Build owned audiences that deepen loyalty, retention, and long-term advocacy.',
+                            cta: 'Schedule a Chat',
+                            href: 'mailto:hello@mattberg.land'
+                        },
+                        field: {
+                            before: 'Create field programs that actually',
+                            nobr: true,
+                            highlight: 'advance deals.',
+                            subhead: 'From executive dinners to targeted city plays, I design field strategies that help sales teams close faster.',
+                            cta: 'Schedule a Chat',
+                            href: 'mailto:hello@mattberg.land'
+                        },
+                        events: {
+                            html: 'Design and deliver experiences that people will <span class="highlight">remember.</span>',
+                            subhead: 'I help teams stay deeply in tune with their audience to create high-impact events, backed by systems that scale.',
+                            cta: 'Schedule a Chat',
+                            href: 'mailto:hello@mattberg.land'
+                        }
+                    };
+                    var headline = document.getElementById('hero-headline');
+                    var highlightEl = document.getElementById('hero-highlight');
+                    var subhead = document.getElementById('hero-subhead');
+                    var cta = document.getElementById('hero-cta');
+                    var heroText = document.querySelector('.hero-text');
+                    var tabBtns = document.querySelectorAll('.sticky-tab');
+                    function setTab(key) {
+                        var d = tabs[key];
+                        heroText.style.opacity = '0';
+                        heroText.style.transform = 'translateY(4px)';
+                        setTimeout(function() {
+                            if (d.html) {
+                                headline.innerHTML = d.html;
+                            } else {
+                                var sep = d.nobr ? ' ' : '<br>';
+                                headline.innerHTML = d.before + sep + '<span class="highlight" id="hero-highlight">' + d.highlight + '</span>' + (d.after || '');
+                            }
+                            subhead.textContent = d.subhead;
+                            cta.href = d.href;
+                            heroText.style.opacity = '1';
+                            heroText.style.transform = 'translateY(0)';
+                        }, 180);
+                        tabBtns.forEach(function(btn) {
+                            var isActive = btn.dataset.tab === key;
+                            btn.classList.toggle('active', isActive);
+                            btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+                        });
+                    }
+                    var tabKeys = Object.keys(tabs);
+                    var currentIdx = 0;
+                    var autoTimer;
+                    function startAutoRotate() {
+                        clearInterval(autoTimer);
+                        autoTimer = setInterval(function() {
+                            currentIdx = (currentIdx + 1) % tabKeys.length;
+                            setTab(tabKeys[currentIdx]);
+                        }, 6000);
+                    }
+                    tabBtns.forEach(function(btn) {
+                        btn.addEventListener('click', function() {
+                            currentIdx = tabKeys.indexOf(btn.dataset.tab);
+                            setTab(btn.dataset.tab);
+                            startAutoRotate();
+                        });
+                        btn.addEventListener('keydown', function(e) {
+                            var idx = Array.from(tabBtns).indexOf(btn);
+                            if (e.key === 'ArrowRight') { tabBtns[(idx + 1) % tabBtns.length].focus(); tabBtns[(idx + 1) % tabBtns.length].click(); }
+                            if (e.key === 'ArrowLeft') { tabBtns[(idx - 1 + tabBtns.length) % tabBtns.length].focus(); tabBtns[(idx - 1 + tabBtns.length) % tabBtns.length].click(); }
+                        });
+                    });
+                    startAutoRotate();
+                })();
+            </script>
         </section>
 
-        <section class="guides">
+        <section class="guides" id="blog">
             <div class="section-header">
-                <h2>My Guides 📖</h2>
+                <h2>Blog</h2>
             </div>
-            
-            <div class="guides-container">
-                <!-- First Card -->
-                <a href="community-in-action.html" class="guide-card">
-                    <div class="guide-header">
-                        <h3>Community in Action</h3>
-                        <p>Best practices for launching and scaling customer communities.</p>
-                    </div>
-                </a>
-
-                <!-- Second Card -->
-                <a href="event-playbooks.html" class="guide-card">
-                    <div class="guide-header">
-                        <h3>Event Playbooks</h3>
-                        <p>Step-by-step guides to organizing memorable and impactful events.</p>
-                    </div>
-                </a>
-
-                <!-- Third Card -->
-                <a href="growth-strategies.html" class="guide-card">
-                    <div class="guide-header">
-                        <h3>Growth Strategies</h3>
-                        <p>Templates and frameworks to grow userbase and engagement.</p>
-                    </div>
-                </a>
-            </div>
-            
-        </section>
-
-        <section class="social">
-            <div class="section-header">
-                <h2>Connect with Me 📲</h2>
-            </div>
-            <div class="social-content">
-                <p class="social-intro">Follow me for community insights, event recaps, and marketing strategies.</p>
-                <div class="social-links">
-                    <a href="https://youtube.com/@MattBergland" class="social-button youtube">
-                        <i class="fa-brands fa-youtube"></i>
-                    </a>
-                    <a href="https://twitter.com/MattBergland" class="social-button twitter">
-                        <i class="fa-brands fa-twitter"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/mattbergland" class="social-button linkedin">
-                        <i class="fa-brands fa-linkedin"></i>
-                    </a>
-                    <a href="https://instagram.com/mattbergland" class="social-button instagram">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </div>
-                <p class="social-outro">Engage with my content and join the conversation on building thriving tech communities.</p>
+            <div class="guides-container" id="blog-posts">
+                <div class="blog-loading">Loading posts...</div>
             </div>
         </section>
-
-        <section class="portfolio">
-            <h2>Partner with me 🤝</h2>
-            <div class="portfolio-grid">
-                <a href="community-building.html" class="portfolio-button">
-                    <h3>Community Building</h3>
-                    <p>Ready to create a space where your users thrive?</p>
-                </a>
-                <a href="content-creation.html" class="portfolio-button">
-                    <h3>Content Creation</h3>
-                    <p>Looking to stand out with authentic, high-impact content?</p>
-                </a>
-            </div>
-        </section>
+        <script>
+            (function() {
+                var SUBSTACK_FEED = 'https://mattbergland.substack.com/feed';
+                var RSS2JSON_URL = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(SUBSTACK_FEED);
+                var container = document.getElementById('blog-posts');
+                fetch(RSS2JSON_URL)
+                    .then(function(res) { return res.json(); })
+                    .then(function(data) {
+                        if (data.status !== 'ok' || !data.items || data.items.length === 0) {
+                            container.innerHTML = '<div class="blog-empty"><p>New posts coming soon. Subscribe on <a href="https://mattbergland.substack.com" target="_blank">Substack</a>.</p></div>';
+                            return;
+                        }
+                        container.innerHTML = data.items.slice(0, 6).map(function(item) {
+                            var date = new Date(item.pubDate);
+                            var dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+                            var desc = item.description || '';
+                            var plainText = desc.replace(/<[^>]*>/g, '').substring(0, 120);
+                            if (desc.replace(/<[^>]*>/g, '').length > 120) plainText += '...';
+                            var thumbnailHtml = '';
+                            if (item.thumbnail) {
+                                thumbnailHtml = '<img class="blog-card-image" src="' + item.thumbnail + '" alt="' + item.title + '" />';
+                            }
+                            return '<a href="' + item.link + '" target="_blank" class="guide-card">' + thumbnailHtml + '<div class="guide-header"><span class="post-date">' + dateStr + '</span><h3>' + item.title + '</h3><p>' + plainText + '</p></div></a>';
+                        }).join('');
+                    })
+                    .catch(function() {
+                        container.innerHTML = '<div class="blog-empty"><p>New posts coming soon. Subscribe on <a href="https://mattbergland.substack.com" target="_blank">Substack</a>.</p></div>';
+                    });
+            })();
+        </script>
     </main>
 
     <footer>
         <div class="social-footer">
-            <h3>Follow along for community tips, event highlights, and success stories ⤵️</h3>
+            <h3>Follow along for community tips, event highlights, and success stories</h3>
             <div class="social-links">
-                <a href="#" class="social-icon"><i class="fa-brands fa-twitter"></i></a>
-                <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
-                <a href="#" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
-                <a href="#" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://x.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://youtube.com/@mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://linkedin.com/in/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://instagram.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
             </div>
         </div>
         <div class="copyright">
