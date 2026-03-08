@@ -221,6 +221,18 @@
     <footer>
         <div class="social-footer">
             <h3>Follow along for community tips, event highlights, and success stories</h3>
+            <div class="arrow-container" id="arrowContainer" aria-hidden="true">
+                <svg class="hand-drawn-arrow" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="roughen" x="-5%" y="-5%" width="110%" height="110%">
+                            <feTurbulence type="turbulence" baseFrequency="0.015" numOctaves="3" result="noise" seed="7" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                    </defs>
+                    <path class="arrow-line" d="M8 6 C28 4, 55 5, 78 10 C96 15, 108 26, 110 42 C112 58, 100 72, 82 82 C70 88, 56 92, 48 93" stroke="var(--text-color)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
+                    <path class="arrow-head" d="M56 84 L46 97 L38 84" stroke="var(--text-color)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0" />
+                </svg>
+            </div>
             <div class="social-links">
                 <a href="https://x.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="https://youtube.com/@mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
@@ -248,6 +260,21 @@
                 localStorage.setItem('darkMode', isDark);
                 updateIcon();
             });
+        })();
+
+        // Animate arrow on scroll into view
+        (function() {
+            var arrow = document.getElementById('arrowContainer');
+            if (!arrow) return;
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        arrow.classList.add('animate');
+                        observer.unobserve(arrow);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(arrow);
         })();
     </script>
 </body>

@@ -1001,6 +1001,50 @@ footer {
     margin-top: 0.5rem;
 }
 
+/* Hand-drawn arrow animation */
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    margin: 0.8rem auto 0.4rem;
+    pointer-events: none;
+}
+
+.hand-drawn-arrow {
+    width: 120px;
+    height: 100px;
+    overflow: visible;
+}
+
+.arrow-line {
+    stroke-dasharray: 300;
+    stroke-dashoffset: 300;
+    filter: url(#roughen);
+}
+
+.arrow-head {
+    opacity: 0;
+}
+
+.arrow-container.animate .arrow-line {
+    animation: drawArrow 1.2s ease-out 0.2s forwards;
+}
+
+.arrow-container.animate .arrow-head {
+    animation: showHead 0.3s ease-out 1.3s forwards;
+}
+
+@keyframes drawArrow {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes showHead {
+    to {
+        opacity: 1;
+    }
+}
+
 /* ============================================
    RESPONSIVE DESIGN - TABLET
    ============================================ */
