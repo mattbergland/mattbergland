@@ -15,13 +15,13 @@
 html.dark {
     --primary-color: #ff9068;
     --text-color: #e5e7eb;
-    --background-color: #111827;
-    --gray-light: #1f2937;
+    --background-color: #121212;
+    --gray-light: #1e1e1e;
     --gray-medium: #6b7280;
-    --white: #1f2937;
-    --card-bg: #1f2937;
-    --card-border: #374151;
-    --shadow-color: rgba(0, 0, 0, 0.3);
+    --white: #1e1e1e;
+    --card-bg: #1e1e1e;
+    --card-border: #2e2e2e;
+    --shadow-color: rgba(0, 0, 0, 0.4);
     --highlight-bg: rgba(255, 144, 104, 0.35);
 }
 
@@ -304,15 +304,15 @@ main {
 }
 
 html.dark .sticky-tab--community {
-    background: #2d4a28;
+    background: #2a3d26;
 }
 
 html.dark .sticky-tab--field {
-    background: #4a3820;
+    background: #3d3020;
 }
 
 html.dark .sticky-tab--events {
-    background: #1e3a52;
+    background: #1e2f3d;
 }
 
 html.dark .sticky-tab {
