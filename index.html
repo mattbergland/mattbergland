@@ -82,8 +82,9 @@
                 (function() {
                     var tabs = {
                         community: {
-                            before: 'Turn users into fans<br>via',
+                            before: 'Turn users into fans',
                             highlight: 'community-driven growth.',
+                            prefix: 'via ',
                             subhead: 'Build owned audiences that deepen loyalty, retention, and long-term advocacy.',
                             cta: 'Schedule a Chat',
                             href: 'mailto:hello@mattberg.land'
@@ -118,7 +119,8 @@
                                 headline.innerHTML = d.html;
                             } else {
                                 var sep = d.nobr ? ' ' : '<br>';
-                                headline.innerHTML = d.before + sep + '<span class="highlight" id="hero-highlight">' + d.highlight + '</span>' + (d.after || '');
+                                var prefix = d.prefix || '';
+                                headline.innerHTML = d.before + sep + prefix + '<span class="highlight" id="hero-highlight">' + d.highlight + '</span>' + (d.after || '');
                             }
                             subhead.textContent = d.subhead;
                             cta.href = d.href;
