@@ -206,7 +206,7 @@
                             if (item.thumbnail) {
                                 thumbnailHtml = '<img class="blog-card-image" src="' + safeThumbnail + '" alt="' + safeTitle + '" />';
                             }
-                            return '<a href="' + escapeHtml(safeLink) + '" target="_blank" class="guide-card">' + thumbnailHtml + '<div class="guide-header"><span class="post-date">' + dateStr + '</span><h3>' + safeTitle + '</h3><p>' + escapeHtml(plainText) + '</p></div></a>';
+                            return '<a href="' + escapeHtml(safeLink) + '" target="_blank" class="guide-card">' + thumbnailHtml + '<div class="guide-header"><span class="post-date">' + escapeHtml(dateStr) + '</span><h3>' + safeTitle + '</h3><p>' + escapeHtml(plainText) + '</p></div></a>';
                         }).join('');
                     })
                     .catch(function() {
