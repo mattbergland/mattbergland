@@ -222,15 +222,23 @@
         <div class="social-footer">
             <h3>Follow along for community tips, event highlights, and success stories</h3>
             <div class="arrow-container" id="arrowContainer" aria-hidden="true">
-                <svg class="hand-drawn-arrow" viewBox="0 0 120 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg class="down-arrow arrow-1" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <defs>
-                        <filter id="roughen" x="-5%" y="-5%" width="110%" height="110%">
-                            <feTurbulence type="turbulence" baseFrequency="0.015" numOctaves="3" result="noise" seed="7" />
-                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="2" xChannelSelector="R" yChannelSelector="G" />
+                        <filter id="roughen" x="-10%" y="-10%" width="120%" height="120%">
+                            <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="3" result="noise" seed="5" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
                         </filter>
                     </defs>
-                    <path class="arrow-line" d="M8 6 C28 4, 55 5, 78 10 C96 15, 108 26, 110 42 C112 58, 100 72, 82 82 C70 88, 56 92, 48 93" stroke="var(--text-color)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" />
-                    <path class="arrow-head" d="M56 84 L46 97 L38 84" stroke="var(--text-color)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0" />
+                    <path class="arrow-shaft" d="M12 2 C11.5 8, 12.5 14, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <svg class="down-arrow arrow-2" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-shaft" d="M12 2 C12.5 9, 11.5 15, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <svg class="down-arrow arrow-3" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-shaft" d="M12 2 C11.8 7, 12.3 13, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
                 </svg>
             </div>
             <div class="social-links">
