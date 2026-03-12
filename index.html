@@ -141,7 +141,7 @@
                         autoTimer = setInterval(function() {
                             currentIdx = (currentIdx + 1) % tabKeys.length;
                             setTab(tabKeys[currentIdx]);
-                        }, 6000);
+                        }, 5000);
                     }
                     tabBtns.forEach(function(btn) {
                         btn.addEventListener('click', function() {
@@ -221,6 +221,26 @@
     <footer>
         <div class="social-footer">
             <h3>Follow along for community tips, event highlights, and success stories</h3>
+            <div class="arrow-container" id="arrowContainer" aria-hidden="true">
+                <svg class="down-arrow arrow-1" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="roughen" x="-10%" y="-10%" width="120%" height="120%">
+                            <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="3" result="noise" seed="5" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                    </defs>
+                    <path class="arrow-shaft" d="M12 2 C11.5 8, 12.5 14, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <svg class="down-arrow arrow-2" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-shaft" d="M12 2 C12.5 9, 11.5 15, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <svg class="down-arrow arrow-3" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-shaft" d="M12 2 C11.8 7, 12.3 13, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+            </div>
             <div class="social-links">
                 <a href="https://x.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="https://youtube.com/@mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
@@ -248,6 +268,21 @@
                 localStorage.setItem('darkMode', isDark);
                 updateIcon();
             });
+        })();
+
+        // Animate arrow on scroll into view
+        (function() {
+            var arrow = document.getElementById('arrowContainer');
+            if (!arrow) return;
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        arrow.classList.add('animate');
+                        observer.unobserve(arrow);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(arrow);
         })();
     </script>
 </body>

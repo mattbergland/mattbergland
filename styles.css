@@ -1001,6 +1001,73 @@ footer {
     margin-top: 0.5rem;
 }
 
+/* Hand-drawn downward arrows animation */
+.arrow-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    margin: 1rem auto 0.6rem;
+    pointer-events: none;
+}
+
+.down-arrow {
+    width: 22px;
+    height: 30px;
+    overflow: visible;
+    opacity: 0;
+}
+
+.arrow-shaft {
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+}
+
+.arrow-tip {
+    opacity: 0;
+}
+
+.arrow-container.animate .arrow-1 {
+    animation: fadeInArrow 0.15s ease-out 0.2s forwards;
+}
+.arrow-container.animate .arrow-1 .arrow-shaft {
+    animation: drawShaft 0.4s ease-out 0.25s forwards;
+}
+.arrow-container.animate .arrow-1 .arrow-tip {
+    animation: showTip 0.2s ease-out 0.6s forwards;
+}
+
+.arrow-container.animate .arrow-2 {
+    animation: fadeInArrow 0.15s ease-out 0.5s forwards;
+}
+.arrow-container.animate .arrow-2 .arrow-shaft {
+    animation: drawShaft 0.4s ease-out 0.55s forwards;
+}
+.arrow-container.animate .arrow-2 .arrow-tip {
+    animation: showTip 0.2s ease-out 0.9s forwards;
+}
+
+.arrow-container.animate .arrow-3 {
+    animation: fadeInArrow 0.15s ease-out 0.8s forwards;
+}
+.arrow-container.animate .arrow-3 .arrow-shaft {
+    animation: drawShaft 0.4s ease-out 0.85s forwards;
+}
+.arrow-container.animate .arrow-3 .arrow-tip {
+    animation: showTip 0.2s ease-out 1.2s forwards;
+}
+
+@keyframes fadeInArrow {
+    to { opacity: 1; }
+}
+
+@keyframes drawShaft {
+    to { stroke-dashoffset: 0; }
+}
+
+@keyframes showTip {
+    to { opacity: 1; }
+}
+
 /* ============================================
    RESPONSIVE DESIGN - TABLET
    ============================================ */
