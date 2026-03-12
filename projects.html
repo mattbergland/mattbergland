@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects — mattberg.land</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script>
+        // Dark mode: apply saved preference before render to prevent flash
+        (function() {
+            var saved = localStorage.getItem('darkMode');
+            if (saved === 'true' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: var(--white);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            overflow: hidden;
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px var(--shadow-color);
+            position: relative;
+        }
+
+        .project-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px -2px var(--shadow-color);
+            border-color: var(--primary-color);
+        }
+
+        .project-card .project-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+        }
+
+        .project-card .project-info {
+            padding: 1.5rem;
+            padding-bottom: 1rem;
+        }
+
+        .project-card .project-info h3 {
+            margin: 0 0 0.5rem 0;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .project-card .project-info p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            opacity: 0.8;
+            line-height: 1.5;
+        }
+
+        .vote-section {
+            display: flex;
+            align-items: center;
+            padding: 0 1.5rem 1.25rem;
+        }
+
+        .vote-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: none;
+            border: 1.5px solid var(--card-border);
+            border-radius: 8px;
+            padding: 0.4rem 0.75rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--gray-medium);
+            cursor: pointer;
+            transition: all 0.15s ease;
+            text-decoration: none;
+        }
+
+        .vote-btn:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: rgba(255, 120, 73, 0.05);
+        }
+
+        .vote-btn.voted {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+            background: rgba(255, 120, 73, 0.08);
+        }
+
+        .vote-btn i {
+            font-size: 0.8rem;
+        }
+
+        .vote-count {
+            font-variant-numeric: tabular-nums;
+        }
+
+        .total-votes-bar {
+            max-width: 1200px;
+            margin: 3rem auto 0;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .total-votes-bar .total-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--gray-light);
+            border-radius: 99px;
+            padding: 0.6rem 1.5rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-color);
+        }
+
+        .total-votes-bar .total-label i {
+            color: var(--primary-color);
+        }
+
+        .project-card .project-info h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .project-card .project-info h3 a:hover {
+            color: var(--primary-color);
+        }
+
+        @media (max-width: 768px) {
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">mattberg.land</a>
+            <div class="nav-links">
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="index.html#blog" class="nav-link">Blog</a>
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon" id="darkIcon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects-section">
+            <a href="index.html" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> Home
+            </a>
+            <div class="section-header">
+                <h2>My Projects</h2>
+            </div>
+
+            <div class="projects-grid">
+
+                <div class="project-card" data-project="bufopedia">
+                    <a href="https://bufopedia.com" target="_blank">
+                        <img class="project-image" src="images/bufopedia.png" alt="Bufopedia" />
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://bufopedia.com" target="_blank">Bufopedia</a></h3>
+                        <p>Browse 1,610+ iconic bufos sourced from the community collection</p>
+                    </div>
+                    <div class="vote-section">
+                        <button class="vote-btn" onclick="upvote('bufopedia')">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            <span class="vote-count" id="count-bufopedia">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="inspireupon">
+                    <a href="https://inspireupon.com" target="_blank">
+                        <img class="project-image" src="images/inspireupon.png" alt="InspireUpon" />
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://inspireupon.com" target="_blank">InspireUpon</a></h3>
+                        <p>Discover legendary sports moments — 100 iconic comebacks, clutch plays & inspirational stories</p>
+                    </div>
+                    <div class="vote-section">
+                        <button class="vote-btn" onclick="upvote('inspireupon')">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            <span class="vote-count" id="count-inspireupon">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="signingpics">
+                    <a href="https://www.signing.pics" target="_blank">
+                        <img class="project-image" src="images/signingpics.png" alt="Signing.pics" />
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://www.signing.pics" target="_blank">Signing.pics</a></h3>
+                        <p>Create stunning announcement images for your new job, internship, or school acceptance</p>
+                    </div>
+                    <div class="vote-section">
+                        <button class="vote-btn" onclick="upvote('signingpics')">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            <span class="vote-count" id="count-signingpics">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="earthquake">
+                    <a href="https://earthquake.wtf" target="_blank">
+                        <img class="project-image" src="images/earthquake.png" alt="Earthquake WTF" />
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://earthquake.wtf" target="_blank">Earthquake WTF</a></h3>
+                        <p>Wait... was that an earthquake? Real-time earthquake detection and alerts</p>
+                    </div>
+                    <div class="vote-section">
+                        <button class="vote-btn" onclick="upvote('earthquake')">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            <span class="vote-count" id="count-earthquake">0</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="project-card" data-project="courtrenter">
+                    <a href="https://courtrenter.com" target="_blank">
+                        <img class="project-image" src="images/courtrenter.png" alt="CourtRenter" />
+                    </a>
+                    <div class="project-info">
+                        <h3><a href="https://courtrenter.com" target="_blank">CourtRenter</a></h3>
+                        <p>Find and book sports courts near you</p>
+                    </div>
+                    <div class="vote-section">
+                        <button class="vote-btn" onclick="upvote('courtrenter')">
+                            <i class="fa-solid fa-arrow-up"></i>
+                            <span class="vote-count" id="count-courtrenter">0</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="total-votes-bar">
+                <div class="total-label">
+                    <i class="fa-solid fa-fire"></i>
+                    <span id="total-votes">0</span> total votes
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="social-footer">
+            <h3>Follow along for community tips, event highlights, and success stories</h3>
+            <div class="arrow-container" id="arrowContainer" aria-hidden="true">
+                <svg class="down-arrow arrow-1" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="roughen" x="-10%" y="-10%" width="120%" height="120%">
+                            <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="3" result="noise" seed="5" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                    </defs>
+                    <path class="arrow-shaft" d="M12 2 C11.5 8, 12.5 14, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <svg class="down-arrow arrow-2" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-shaft" d="M12 2 C12.5 9, 11.5 15, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <svg class="down-arrow arrow-3" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-shaft" d="M12 2 C11.8 7, 12.3 13, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://youtube.com/@mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://linkedin.com/in/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://instagram.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>mattberg.land 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Voting stored in localStorage only (no backend needed)
+        var votes = JSON.parse(localStorage.getItem('projectVotes') || '{}');
+        var voted = JSON.parse(localStorage.getItem('projectVoted') || '{}');
+
+        function updateUI() {
+            var total = 0;
+            var cards = document.querySelectorAll('.project-card');
+            cards.forEach(function(card) {
+                var id = card.dataset.project;
+                var count = votes[id] || 0;
+                total += count;
+                var el = document.getElementById('count-' + id);
+                if (el) el.textContent = count;
+                var btn = card.querySelector('.vote-btn');
+                if (btn && voted[id]) btn.classList.add('voted');
+            });
+            document.getElementById('total-votes').textContent = total;
+        }
+
+        function upvote(projectId) {
+            if (voted[projectId]) return;
+            votes[projectId] = (votes[projectId] || 0) + 1;
+            voted[projectId] = true;
+            localStorage.setItem('projectVotes', JSON.stringify(votes));
+            localStorage.setItem('projectVoted', JSON.stringify(voted));
+            updateUI();
+        }
+
+        updateUI();
+    </script>
+
+    <script>
+        // Dark mode toggle
+        (function() {
+            var toggle = document.getElementById('darkModeToggle');
+            var icon = document.getElementById('darkIcon');
+            function updateIcon() {
+                var isDark = document.documentElement.classList.contains('dark');
+                icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+            updateIcon();
+            toggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                var isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('darkMode', isDark);
+                updateIcon();
+            });
+        })();
+
+        // Animate arrow on scroll into view
+        (function() {
+            var arrow = document.getElementById('arrowContainer');
+            if (!arrow) return;
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        arrow.classList.add('animate');
+                        observer.unobserve(arrow);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(arrow);
+        })();
+    </script>
+</body>
+</html>
