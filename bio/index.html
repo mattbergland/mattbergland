@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Matt Bergland — Field Marketing & Events at Cognition</title>
+  <meta name="description" content="Field Marketing & Events at Cognition. Community builder, event marketer, and pipeline accelerator based in San Francisco." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0b0d;
+      --surface: #131316;
+      --text: #f4f4f5;
+      --muted: #9ca3af;
+      --accent: #ff6b35;
+      --border: rgba(255,255,255,0.08);
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--text); text-decoration: none; }
+    .slides {
+      height: 100vh;
+      overflow-y: scroll;
+      scroll-snap-type: y mandatory;
+      scroll-behavior: smooth;
+    }
+    .slide {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      scroll-snap-align: start;
+      padding: 3rem 1.5rem;
+      position: relative;
+    }
+    .slide:nth-child(even) { background: var(--surface); }
+    .container {
+      max-width: 900px;
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    @media (min-width: 720px) {
+      .hero { grid-template-columns: 280px 1fr; gap: 3.5rem; }
+    }
+    .photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--border);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      justify-self: center;
+    }
+    @media (min-width: 720px) {
+      .photo { width: 280px; height: 280px; justify-self: start; }
+    }
+    .eyebrow {
+      display: inline-block;
+      color: var(--accent);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+    h1 {
+      font-size: clamp(2.25rem, 6vw, 4rem);
+      line-height: 1.05;
+      font-weight: 700;
+      margin: 0 0 0.75rem;
+    }
+    .role {
+      font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+      color: var(--muted);
+      margin: 0 0 1.25rem;
+    }
+    .tagline {
+      font-size: 1.15rem;
+      line-height: 1.55;
+      color: var(--text);
+      max-width: 50ch;
+      margin: 0 0 1.75rem;
+    }
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 0.55rem 0.95rem;
+      font-size: 0.9rem;
+      color: var(--text);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .pill:hover { background: rgba(255,255,255,0.06); border-color: rgba(255,255,255,0.18); }
+
+    /* Section typography */
+    h2 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin: 0 0 1.25rem;
+      line-height: 1.15;
+    }
+    .lead {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 65ch;
+      margin: 0 0 2rem;
+    }
+    .lead strong { color: var(--text); font-weight: 500; }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+    @media (min-width: 560px) {
+      .stats { grid-template-columns: repeat(4, 1fr); }
+    }
+    .stat {
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.02);
+    }
+    .stat .num {
+      display: block;
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 0.25rem;
+    }
+    .stat .label {
+      font-size: 0.85rem;
+      color: var(--muted);
+      line-height: 1.35;
+    }
+
+    /* Timeline */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .job {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 0.5rem 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.1rem 1.25rem;
+      background: rgba(255,255,255,0.02);
+    }
+    .job .title { font-weight: 600; color: var(--text); margin: 0; }
+    .job .company { color: var(--muted); font-size: 0.95rem; }
+    .job .when { color: var(--muted); font-size: 0.85rem; white-space: nowrap; }
+    @media (max-width: 560px) {
+      .job { grid-template-columns: 1fr; }
+      .job .when { text-align: left; }
+    }
+
+    /* Projects */
+    .projects {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+    @media (min-width: 560px) {
+      .projects { grid-template-columns: repeat(2, 1fr); }
+    }
+    .project {
+      border: 1px solid var(--border);
+      border-radius: 1rem;
+      padding: 1.25rem;
+      background: rgba(255,255,255,0.02);
+    }
+    .project h3 { margin: 0 0 0.4rem; font-size: 1.1rem; font-weight: 600; }
+    .project p { margin: 0; color: var(--muted); font-size: 0.95rem; line-height: 1.5; }
+
+    /* CTA */
+    .cta {
+      text-align: center;
+    }
+    .cta .lead { margin: 0 auto 2rem; }
+    .cta .links { justify-content: center; }
+
+    /* Navigation */
+    .dots {
+      position: fixed;
+      right: 1.25rem;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      z-index: 10;
+    }
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.25);
+      cursor: pointer;
+      border: none;
+      padding: 0;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .dot.active { background: var(--accent); transform: scale(1.15); }
+    .hint {
+      position: fixed;
+      bottom: 1.25rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      color: var(--muted);
+      opacity: 0.6;
+      pointer-events: none;
+      z-index: 10;
+    }
+    @media (max-width: 560px) {
+      .dots { display: none; }
+      .hint { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides" id="slides">
+    <section class="slide" id="s1">
+      <div class="container">
+        <div class="hero">
+          <img src="matt.png" alt="Matt Bergland" class="photo" />
+          <div>
+            <span class="eyebrow">San Francisco, CA</span>
+            <h1>Matt Bergland</h1>
+            <p class="role">Field Marketing, Events &amp; Programs at <a href="https://cognition.ai" target="_blank" rel="noopener">Cognition</a></p>
+            <p class="tagline">Good things tend to happen in person. I turn users into fans through IRL &amp; URL community experiences, events, and brand activations.</p>
+            <div class="links">
+              <a class="pill" href="https://www.linkedin.com/in/mattbergland" target="_blank" rel="noopener">LinkedIn</a>
+              <a class="pill" href="https://mattberg.land" target="_blank" rel="noopener">mattberg.land</a>
+              <a class="pill" href="https://github.com/mattbergland" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="s2">
+      <div class="container">
+        <span class="eyebrow">About</span>
+        <h2>Community at the center of great products</h2>
+        <p class="lead">
+          At <strong>Cognition</strong>, we're building AI tools to power the future of software development — including <strong>Devin</strong>, the first autonomous software engineer. I focus on the human side of that future: bringing developers, teams, and communities together through events, content, and authentic IRL &amp; URL experiences.
+        </p>
+        <div class="stats">
+          <div class="stat">
+            <span class="num">10+</span>
+            <span class="label">Years building communities &amp; events</span>
+          </div>
+          <div class="stat">
+            <span class="num">100k+</span>
+            <span class="label">Discord members engaged</span>
+          </div>
+          <div class="stat">
+            <span class="num">25k+</span>
+            <span class="label">Reddit community members</span>
+          </div>
+          <div class="stat">
+            <span class="num">15k+</span>
+            <span class="label">Luma community members</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="s3">
+      <div class="container">
+        <span class="eyebrow">Experience</span>
+        <h2>Around the world of community &amp; marketing</h2>
+        <p class="lead">Building owned audiences, launching field programs, and driving pipeline for AI products and community-driven startups.</p>
+        <div class="timeline">
+          <div class="job">
+            <div>
+              <p class="title">Field Marketing &amp; Events</p>
+              <p class="company">Cognition</p>
+            </div>
+            <span class="when">2026 – Present</span>
+          </div>
+          <div class="job">
+            <div>
+              <p class="title">Community &amp; Events</p>
+              <p class="company">Cognition</p>
+            </div>
+            <span class="when">2025 – 2026</span>
+          </div>
+          <div class="job">
+            <div>
+              <p class="title">Community</p>
+              <p class="company">Windsurf / Codeium</p>
+            </div>
+            <span class="when">2024 – 2025</span>
+          </div>
+          <div class="job">
+            <div>
+              <p class="title">Chief of Staff, Partnerships &amp; GTM</p>
+              <p class="company">Rich Ventures</p>
+            </div>
+            <span class="when">2024</span>
+          </div>
+          <div class="job">
+            <div>
+              <p class="title">Director of Community &amp; Community Manager</p>
+              <p class="company">Squadz</p>
+            </div>
+            <span class="when">2017 – 2024</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="s4">
+      <div class="container">
+        <span class="eyebrow">Side Projects</span>
+        <h2>Things I build for fun and utility</h2>
+        <p class="lead">A few small projects that keep my curiosity sharp and my community muscle trained.</p>
+        <div class="projects">
+          <div class="project">
+            <h3>Bufopedia</h3>
+            <p>Browse 1,600+ community-sourced froge icons for anywhere that needs a little extra energy.</p>
+          </div>
+          <div class="project">
+            <h3>Signing.pics</h3>
+            <p>Create announcement images for new jobs, internships, and school acceptances.</p>
+          </div>
+          <div class="project">
+            <h3>CourtRenter</h3>
+            <p>Find and book sports courts near you.</p>
+          </div>
+          <div class="project">
+            <h3>Earthquake WTF</h3>
+            <p>Real-time earthquake detection and alerts.</p>
+          </div>
+          <div class="project">
+            <h3>InspireUpon</h3>
+            <p>100 legendary sports moments, comebacks, and clutch plays.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" id="s5">
+      <div class="container cta">
+        <span class="eyebrow">Connect</span>
+        <h2>Let's build something together.</h2>
+        <p class="lead">Whether it's a field event, a community program, or a new way to bring people and AI products closer, I'd love to hear from you.</p>
+        <div class="links">
+          <a class="pill" href="https://www.linkedin.com/in/mattbergland" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="pill" href="https://mattberg.land" target="_blank" rel="noopener">mattberg.land</a>
+          <a class="pill" href="https://github.com/mattbergland" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div class="dots" id="dots" aria-hidden="true">
+    <button class="dot" data-slide="0" aria-label="Go to slide 1"></button>
+    <button class="dot" data-slide="1" aria-label="Go to slide 2"></button>
+    <button class="dot" data-slide="2" aria-label="Go to slide 3"></button>
+    <button class="dot" data-slide="3" aria-label="Go to slide 4"></button>
+    <button class="dot" data-slide="4" aria-label="Go to slide 5"></button>
+  </div>
+
+  <div class="hint">Use arrow keys or scroll</div>
+
+  <script>
+    const slides = document.getElementById('slides');
+    const slideEls = Array.from(document.querySelectorAll('.slide'));
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    let current = 0;
+
+    function updateDots(idx) {
+      current = idx;
+      dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    function goTo(idx) {
+      if (idx < 0 || idx >= slideEls.length) return;
+      slideEls[idx].scrollIntoView({ behavior: 'smooth' });
+      updateDots(idx);
+    }
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => goTo(i)));
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ') {
+        e.preventDefault();
+        goTo(current + 1);
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goTo(current - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        goTo(0);
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        goTo(slideEls.length - 1);
+      }
+    });
+
+    let observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = slideEls.indexOf(entry.target);
+          if (idx !== -1) updateDots(idx);
+        }
+      });
+    }, { root: slides, threshold: 0.5 });
+
+    slideEls.forEach(s => observer.observe(s));
+
+    // Let native scroll-snap handle touch swiping; IntersectionObserver keeps dots in sync.
+  </script>
+</body>
+</html>
