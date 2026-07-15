@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>A Cure for Everything — The AI Health Revolution</title>
+    <meta name="description" content="A fun, optimistic look at how AI could help us prevent, treat, and one day eradicate disease.">
+    <script>
+        // Dark mode: apply saved preference before render to prevent flash
+        (function() {
+            var saved = localStorage.getItem('darkMode');
+            if (saved === 'true' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --health-teal: #14b8a6;
+            --health-blue: #3b82f6;
+            --health-purple: #8b5cf6;
+        }
+
+        .fh-main { overflow: hidden; }
+
+        /* Hero */
+        .fh-hero {
+            position: relative;
+            text-align: center;
+            padding: 3rem 1rem 4rem;
+            margin-bottom: 3rem;
+        }
+
+        .fh-hero .fh-eyebrow {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary-color);
+            background: var(--highlight-bg);
+            padding: 0.4rem 0.9rem;
+            border-radius: 999px;
+            margin-bottom: 1.5rem;
+        }
+
+        .fh-hero h1 {
+            font-size: clamp(2.4rem, 6vw, 4.5rem);
+            font-weight: 900;
+            line-height: 1.05;
+            letter-spacing: -0.03em;
+            margin: 0 auto 1.5rem;
+            max-width: 900px;
+        }
+
+        .fh-gradient-text {
+            background: linear-gradient(100deg, var(--health-teal), var(--health-blue), var(--health-purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .fh-hero p.fh-lede {
+            font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+            line-height: 1.6;
+            opacity: 0.8;
+            max-width: 640px;
+            margin: 0 auto 2.5rem;
+        }
+
+        .fh-cta-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .fh-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.8rem;
+            border-radius: 999px;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .fh-btn--primary {
+            background: linear-gradient(100deg, var(--health-teal), var(--health-blue));
+            color: #fff;
+            box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.5);
+        }
+
+        .fh-btn--ghost {
+            background: transparent;
+            color: var(--text-color);
+            border: 2px solid var(--card-border);
+        }
+
+        .fh-btn:hover { transform: translateY(-2px); }
+        .fh-btn--ghost:hover { border-color: var(--primary-color); }
+
+        /* Floating emoji */
+        .fh-floaties {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+        .fh-floatie {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.18;
+            animation: fhFloat 9s ease-in-out infinite;
+        }
+        @keyframes fhFloat {
+            0%, 100% { transform: translateY(0) rotate(-6deg); }
+            50% { transform: translateY(-26px) rotate(6deg); }
+        }
+
+        /* Stat counters */
+        .fh-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            max-width: 900px;
+            margin: 0 auto 4.5rem;
+        }
+        .fh-stat {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 2rem 1.25rem;
+            text-align: center;
+            box-shadow: 0 6px 20px -10px var(--shadow-color);
+        }
+        .fh-stat .fh-num {
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 900;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+        .fh-stat .fh-label {
+            margin-top: 0.6rem;
+            font-size: 0.95rem;
+            opacity: 0.7;
+        }
+
+        /* Section headings */
+        .fh-section { max-width: 1000px; margin: 0 auto 5rem; }
+        .fh-section-head { text-align: center; margin-bottom: 2.5rem; }
+        .fh-section-head h2 {
+            font-size: clamp(1.8rem, 4vw, 2.6rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.75rem;
+        }
+        .fh-section-head p {
+            font-size: 1.1rem;
+            opacity: 0.7;
+            max-width: 560px;
+            margin: 0 auto;
+        }
+
+        /* Feature cards */
+        .fh-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+        }
+        .fh-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 18px;
+            padding: 1.75rem;
+            transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+        }
+        .fh-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 30px -12px var(--shadow-color);
+            border-color: var(--primary-color);
+        }
+        .fh-card .fh-icon {
+            width: 54px; height: 54px;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; color: #fff;
+            margin-bottom: 1.1rem;
+        }
+        .fh-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; }
+        .fh-card p { opacity: 0.75; line-height: 1.6; }
+
+        .fh-ic-teal { background: linear-gradient(135deg, #14b8a6, #0ea5e9); }
+        .fh-ic-blue { background: linear-gradient(135deg, #3b82f6, #6366f1); }
+        .fh-ic-purple { background: linear-gradient(135deg, #8b5cf6, #d946ef); }
+        .fh-ic-orange { background: linear-gradient(135deg, #ff7849, #f59e0b); }
+        .fh-ic-green { background: linear-gradient(135deg, #22c55e, #14b8a6); }
+        .fh-ic-pink { background: linear-gradient(135deg, #ec4899, #8b5cf6); }
+
+        /* Eradication checklist */
+        .fh-checklist {
+            max-width: 640px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 0.85rem;
+        }
+        .fh-check {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            padding: 1rem 1.25rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateX(-14px);
+        }
+        .fh-check.show { animation: fhSlideIn 0.5s ease forwards; }
+        @keyframes fhSlideIn { to { opacity: 1; transform: translateX(0); } }
+        .fh-check .fh-tick {
+            flex-shrink: 0;
+            width: 30px; height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #22c55e, #14b8a6);
+            color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.9rem;
+        }
+        .fh-check .fh-disease {
+            position: relative;
+            transition: color 0.4s ease 0.2s;
+        }
+        .fh-check.show .fh-disease {
+            color: var(--gray-medium);
+            text-decoration: line-through;
+            text-decoration-color: var(--primary-color);
+            text-decoration-thickness: 2px;
+        }
+        .fh-check .fh-soon {
+            margin-left: auto;
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--health-teal);
+            opacity: 0.8;
+        }
+
+        /* Timeline */
+        .fh-timeline {
+            position: relative;
+            max-width: 720px;
+            margin: 0 auto;
+            padding-left: 2rem;
+        }
+        .fh-timeline::before {
+            content: '';
+            position: absolute;
+            left: 7px; top: 6px; bottom: 6px;
+            width: 3px;
+            background: linear-gradient(var(--health-teal), var(--health-blue), var(--health-purple));
+            border-radius: 3px;
+        }
+        .fh-tl-item { position: relative; padding: 0 0 2.25rem 1.75rem; }
+        .fh-tl-item::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem; top: 4px;
+            width: 17px; height: 17px;
+            border-radius: 50%;
+            background: var(--background-color);
+            border: 3px solid var(--health-blue);
+        }
+        .fh-tl-item .fh-year {
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: var(--primary-color);
+        }
+        .fh-tl-item h4 { font-size: 1.1rem; margin: 0.15rem 0 0.35rem; }
+        .fh-tl-item p { opacity: 0.72; line-height: 1.55; }
+
+        /* Closing CTA */
+        .fh-closer {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 4rem;
+            padding: 3.5rem 1.5rem;
+            border-radius: 26px;
+            background: linear-gradient(135deg, rgba(20,184,166,0.12), rgba(139,92,246,0.12));
+            border: 1px solid var(--card-border);
+        }
+        .fh-closer h2 {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        .fh-closer p { font-size: 1.15rem; opacity: 0.8; margin-bottom: 2rem; }
+
+        .fh-disclaimer {
+            max-width: 640px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 0.85rem;
+            opacity: 0.5;
+            line-height: 1.5;
+        }
+
+        /* Reveal on scroll */
+        .fh-reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fh-reveal.show { opacity: 1; transform: translateY(0); }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fh-floatie { animation: none; }
+            .fh-reveal { opacity: 1; transform: none; transition: none; }
+        }
+
+        @media (max-width: 640px) {
+            .fh-stats { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">mattberg.land</a>
+            <div class="nav-links">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="projects.html" class="nav-link">Projects</a>
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon" id="darkIcon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="fh-main">
+        <!-- Hero -->
+        <section class="fh-hero">
+            <div class="fh-floaties" id="fhFloaties" aria-hidden="true"></div>
+            <span class="fh-eyebrow"><i class="fa-solid fa-heart-pulse"></i>&nbsp; The optimistic case</span>
+            <h1>The future of health is <span class="fh-gradient-text">brighter than we think.</span></h1>
+            <p class="fh-lede">Artificial intelligence is quietly becoming medicine's greatest ally — reading scans faster than any human, designing new medicines in weeks instead of years, and giving every person a tireless helper devoted to keeping them well. Here's the hopeful version of what comes next. 🌅</p>
+            <div class="fh-cta-row">
+                <a href="#how" class="fh-btn fh-btn--primary">See how it works <i class="fa-solid fa-arrow-down"></i></a>
+                <a href="#timeline" class="fh-btn fh-btn--ghost">Peek at the timeline</a>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="fh-stats" id="fhStats">
+            <div class="fh-stat fh-reveal">
+                <div class="fh-num"><span class="fh-count" data-target="200">0</span>×</div>
+                <div class="fh-label">Faster drug candidate discovery with AI-designed molecules</div>
+            </div>
+            <div class="fh-stat fh-reveal">
+                <div class="fh-num"><span class="fh-count" data-target="99">0</span>%</div>
+                <div class="fh-label">Accuracy AI can reach spotting some cancers in early scans</div>
+            </div>
+            <div class="fh-stat fh-reveal">
+                <div class="fh-num"><span class="fh-count" data-target="200">0</span>M+</div>
+                <div class="fh-label">Protein structures mapped by AI — a gift to every researcher</div>
+            </div>
+        </section>
+
+        <!-- How it works -->
+        <section class="fh-section" id="how">
+            <div class="fh-section-head fh-reveal">
+                <h2>Six ways AI is rewriting medicine</h2>
+                <p>Not science fiction — these are things happening in labs and clinics right now, getting better every month.</p>
+            </div>
+            <div class="fh-cards">
+                <div class="fh-card fh-reveal">
+                    <div class="fh-icon fh-ic-purple"><i class="fa-solid fa-dna"></i></div>
+                    <h3>Medicines designed in weeks</h3>
+                    <p>AI can imagine millions of molecules and predict which ones might heal — shrinking a decade of trial-and-error into months.</p>
+                </div>
+                <div class="fh-card fh-reveal">
+                    <div class="fh-icon fh-ic-blue"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+                    <h3>Catching illness early</h3>
+                    <p>Trained on millions of scans, AI spots the faintest early signs of cancer, heart disease, and more — when they're easiest to beat.</p>
+                </div>
+                <div class="fh-card fh-reveal">
+                    <div class="fh-icon fh-ic-teal"><i class="fa-solid fa-user-doctor"></i></div>
+                    <h3>A doctor for everyone</h3>
+                    <p>AI helpers can bring expert-level guidance to remote villages and busy cities alike — making great care a right, not a lottery.</p>
+                </div>
+                <div class="fh-card fh-reveal">
+                    <div class="fh-icon fh-ic-pink"><i class="fa-solid fa-fingerprint"></i></div>
+                    <h3>Treatments made for you</h3>
+                    <p>By reading your unique biology, AI helps tailor therapies to your body — the right medicine, the right dose, the first time.</p>
+                </div>
+                <div class="fh-card fh-reveal">
+                    <div class="fh-icon fh-ic-green"><i class="fa-solid fa-shield-heart"></i></div>
+                    <h3>Stopping outbreaks sooner</h3>
+                    <p>AI watches global health signals to flag new threats early, and can help design vaccines at record-breaking speed.</p>
+                </div>
+                <div class="fh-card fh-reveal">
+                    <div class="fh-icon fh-ic-orange"><i class="fa-solid fa-heart-circle-check"></i></div>
+                    <h3>Wellness that never sleeps</h3>
+                    <p>Wearables plus AI gently nudge us toward healthier habits and notice problems before we even feel them.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Eradication checklist -->
+        <section class="fh-section">
+            <div class="fh-section-head fh-reveal">
+                <h2>The dream: a checklist we get to finish ✅</h2>
+                <p>Humanity already erased smallpox from the planet. With AI on our side, this to-do list feels more achievable than ever.</p>
+            </div>
+            <div class="fh-checklist" id="fhChecklist">
+                <div class="fh-check"><span class="fh-tick"><i class="fa-solid fa-check"></i></span><span class="fh-disease">Smallpox</span><span class="fh-soon">Done — 1980</span></div>
+                <div class="fh-check"><span class="fh-tick"><i class="fa-solid fa-check"></i></span><span class="fh-disease">Polio</span><span class="fh-soon">Almost there</span></div>
+                <div class="fh-check"><span class="fh-tick"><i class="fa-solid fa-check"></i></span><span class="fh-disease">Malaria</span><span class="fh-soon">In progress</span></div>
+                <div class="fh-check"><span class="fh-tick"><i class="fa-solid fa-check"></i></span><span class="fh-disease">Many childhood cancers</span><span class="fh-soon">On the way</span></div>
+                <div class="fh-check"><span class="fh-tick"><i class="fa-solid fa-check"></i></span><span class="fh-disease">Rare genetic diseases</span><span class="fh-soon">Coming soon</span></div>
+                <div class="fh-check"><span class="fh-tick"><i class="fa-solid fa-check"></i></span><span class="fh-disease">...the next one is up to us</span><span class="fh-soon">Loading</span></div>
+            </div>
+        </section>
+
+        <!-- Timeline -->
+        <section class="fh-section" id="timeline">
+            <div class="fh-section-head fh-reveal">
+                <h2>A hopeful timeline 🚀</h2>
+                <p>An optimistic (and imaginative!) sketch of milestones we could reach together.</p>
+            </div>
+            <div class="fh-timeline">
+                <div class="fh-tl-item fh-reveal">
+                    <div class="fh-year">Today</div>
+                    <h4>AI reads scans alongside doctors</h4>
+                    <p>Radiologists and AI team up to catch disease earlier and reduce mistakes — a partnership, not a replacement.</p>
+                </div>
+                <div class="fh-tl-item fh-reveal">
+                    <div class="fh-year">Soon</div>
+                    <h4>Blood tests that catch cancer years early</h4>
+                    <p>AI-powered screening finds trouble long before symptoms appear, when treatment is simplest and kindest.</p>
+                </div>
+                <div class="fh-tl-item fh-reveal">
+                    <div class="fh-year">This decade</div>
+                    <h4>Custom medicines for rare diseases</h4>
+                    <p>Families facing one-in-a-million conditions get therapies designed just for them, faster and more affordably.</p>
+                </div>
+                <div class="fh-tl-item fh-reveal">
+                    <div class="fh-year">The horizon</div>
+                    <h4>A personal health companion for all</h4>
+                    <p>Everyone, everywhere carries a trusted AI helper that answers questions, watches over their health, and connects them to care.</p>
+                </div>
+                <div class="fh-tl-item fh-reveal">
+                    <div class="fh-year">The dream</div>
+                    <h4>Another disease crossed off — for good</h4>
+                    <p>We add a new name to the short, proud list of illnesses humanity has beaten forever. 🎉</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Closer -->
+        <section class="fh-closer fh-reveal">
+            <h2>Tomorrow's medicine is being built today.</h2>
+            <p>The future of health isn't something that happens to us — it's something we get to build, together, with a little help from the smartest tools we've ever made. And that's a reason to be optimistic. 💙</p>
+            <a href="mailto:hello@mattberg.land" class="fh-btn fh-btn--primary">Let's talk about the future <i class="fa-solid fa-paper-plane"></i></a>
+        </section>
+
+        <p class="fh-disclaimer">A hopeful, big-picture look at where AI and medicine are heading — meant to inspire, not to give medical advice. Always talk to a real healthcare professional about your health.</p>
+    </main>
+
+    <footer>
+        <div class="social-footer">
+            <h3>Optimistic about the future? So am I.</h3>
+            <div class="social-links">
+                <a href="https://x.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://youtube.com/@mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://linkedin.com/in/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://instagram.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>mattberg.land 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        // Dark mode toggle
+        (function() {
+            var toggle = document.getElementById('darkModeToggle');
+            var icon = document.getElementById('darkIcon');
+            function updateIcon() {
+                var isDark = document.documentElement.classList.contains('dark');
+                icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+            updateIcon();
+            toggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                localStorage.setItem('darkMode', document.documentElement.classList.contains('dark'));
+                updateIcon();
+            });
+        })();
+
+        // Floating emoji in hero
+        (function() {
+            var container = document.getElementById('fhFloaties');
+            if (!container) return;
+            var emojis = ['🧬', '💊', '🩺', '🔬', '❤️', '🧪', '🩹', '✨', '🧠', '🌱'];
+            for (var i = 0; i < 14; i++) {
+                var span = document.createElement('span');
+                span.className = 'fh-floatie';
+                span.textContent = emojis[i % emojis.length];
+                span.style.left = Math.random() * 100 + '%';
+                span.style.top = Math.random() * 100 + '%';
+                span.style.fontSize = (1.4 + Math.random() * 2.2) + 'rem';
+                span.style.animationDelay = (Math.random() * 6) + 's';
+                span.style.animationDuration = (7 + Math.random() * 6) + 's';
+                container.appendChild(span);
+            }
+        })();
+
+        // Reveal on scroll
+        (function() {
+            var els = document.querySelectorAll('.fh-reveal');
+            if (!('IntersectionObserver' in window)) {
+                els.forEach(function(el) { el.classList.add('show'); });
+                return;
+            }
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.15 });
+            els.forEach(function(el) { obs.observe(el); });
+        })();
+
+        // Count-up stats
+        (function() {
+            var counted = false;
+            var stats = document.getElementById('fhStats');
+            if (!stats) return;
+            function run() {
+                if (counted) return;
+                counted = true;
+                document.querySelectorAll('.fh-count').forEach(function(el) {
+                    var target = parseInt(el.getAttribute('data-target'), 10);
+                    var start = null;
+                    var dur = 1400;
+                    function step(ts) {
+                        if (!start) start = ts;
+                        var p = Math.min((ts - start) / dur, 1);
+                        var eased = 1 - Math.pow(1 - p, 3);
+                        el.textContent = Math.round(eased * target);
+                        if (p < 1) requestAnimationFrame(step);
+                    }
+                    requestAnimationFrame(step);
+                });
+            }
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) { if (e.isIntersecting) { run(); obs.disconnect(); } });
+            }, { threshold: 0.4 });
+            obs.observe(stats);
+        })();
+
+        // Staggered checklist reveal
+        (function() {
+            var list = document.getElementById('fhChecklist');
+            if (!list) return;
+            var items = list.querySelectorAll('.fh-check');
+            var obs = new IntersectionObserver(function(entries) {
+                entries.forEach(function(e) {
+                    if (e.isIntersecting) {
+                        items.forEach(function(item, i) {
+                            item.style.animationDelay = (i * 0.35) + 's';
+                            item.classList.add('show');
+                        });
+                        obs.disconnect();
+                    }
+                });
+            }, { threshold: 0.3 });
+            obs.observe(list);
+        })();
+    </script>
+</body>
+</html>
