@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contact | Start Your Project — Grit City Builders, Tacoma WA</title>
+  <meta name="description" content="Contact Grit City Builders for your new build, renovation, restoration, or ADU in Tacoma and the South Sound. Tell us about your project — we'd love to hear from you.">
+  <link rel="canonical" href="https://www.gritcitybuilders.com/contact">
+  <meta property="og:title" content="Contact | Grit City Builders">
+  <meta property="og:description" content="Tell us about your project — new build, renovation, restoration, or ADU in Tacoma, WA.">
+  <meta property="og:image" content="images/home-living-kitchen.jpg">
+  <meta name="theme-color" content="#14110f">
+  <link rel="icon" type="image/png" href="images/brand/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+  <noscript><style>.reveal{opacity:1;transform:none}</style></noscript>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Grit City Builders home"><img src="images/brand/logo-white.png" alt="Grit City Builders"></a>
+    <button class="nav-toggle" aria-label="Menu" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
+    <nav class="nav" id="nav" aria-label="Primary">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a class="btn active" href="contact.html">Start Your Project</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="page-hero">
+      <div class="page-hero__bg"><img src="images/home-living-kitchen.jpg" alt="Grit City Builders finished interior"></div>
+      <div class="page-hero__inner container">
+        <div class="crumbs"><a href="index.html">Home</a> / Contact</div>
+        <h1>Let's talk about your project</h1>
+        <p>The more details you can share &mdash; whether it's already underway or just something you can't stop thinking about &mdash; the better. We look forward to hearing from you.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <span class="eyebrow">Send a Message</span>
+          <h2>Tell us what you're building</h2>
+          <!-- To go live: create a free form endpoint at https://formspree.io and replace FORM_ID below.
+               Until then, the form opens a pre-filled email to gritcitybuilders@gmail.com. -->
+          <form id="contact-form" class="form" action="https://formspree.io/f/FORM_ID" method="POST" novalidate>
+            <div class="row">
+              <div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" required></div>
+              <div class="field"><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel"></div>
+            </div>
+            <div class="row">
+              <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
+              <div class="field"><label for="address">Project address</label><input id="address" name="address" type="text" autocomplete="street-address"></div>
+            </div>
+            <div class="field">
+              <label for="subject">Project type</label>
+              <select id="subject" name="subject">
+                <option>New construction</option>
+                <option>Full-scale renovation</option>
+                <option>Historic restoration</option>
+                <option>ADU / DADU</option>
+                <option>Something else</option>
+              </select>
+            </div>
+            <div class="field"><label for="message">Project details</label><textarea id="message" name="message" placeholder="Scope, timeline, budget range, and anything else you'd like us to know." required></textarea></div>
+            <div class="form-status" role="status" aria-live="polite"></div>
+            <button class="btn btn--lg" type="submit">Submit</button>
+            <p class="form__note">Prefer email? Reach us directly at <a href="mailto:gritcitybuilders@gmail.com">gritcitybuilders@gmail.com</a>.</p>
+          </form>
+        </div>
+
+        <div class="reveal">
+          <span class="eyebrow">Details</span>
+          <h2>Get in touch</h2>
+          <ul class="info-list">
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><path d="m4 6 8 6 8-6"/></svg></span>
+              <span><b>Email</b><a href="mailto:gritcitybuilders@gmail.com">gritcitybuilders@gmail.com</a></span>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7-6.2-7-11a7 7 0 0 1 14 0c0 4.8-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+              <span><b>Based in</b>Tacoma, WA</span>
+            </li>
+            <li>
+              <span class="ico" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21V7l9-4 9 4v14"/><path d="M9 21v-6h6v6"/></svg></span>
+              <span><b>Service area</b>Tacoma &amp; the South Sound</span>
+            </li>
+          </ul>
+          <div style="margin-top:26px">
+            <b style="font-family:var(--head);text-transform:uppercase;letter-spacing:0.06em">Where we work</b>
+            <div class="chips">
+              <span class="chip">Tacoma</span>
+              <span class="chip">University Place</span>
+              <span class="chip">Gig Harbor</span>
+              <span class="chip">Bremerton</span>
+              <span class="chip">Puyallup</span>
+              <span class="chip">South Sound</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div><img src="images/brand/logo-white.png" alt="Grit City Builders"><p>Custom home builder and general contractor building and restoring beautiful homes across Tacoma and the South Sound &mdash; with precision, passion, and purpose.</p></div>
+        <div><h4>Explore</h4><ul class="footer-nav"><li><a href="index.html">Home</a></li><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="portfolio.html">Portfolio</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+        <div><h4>Get in Touch</h4><ul class="footer-nav"><li><a href="mailto:gritcitybuilders@gmail.com">gritcitybuilders@gmail.com</a></li><li>Tacoma, WA &amp; the South Sound</li><li><a href="contact.html">Start your project &rarr;</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; <span id="year">2024</span> Grit City Builders. Licensed &amp; insured general contractor.</span>
+        <span>Built with grit in the Pacific Northwest.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="js/main.js"></script>
+</body>
+</html>

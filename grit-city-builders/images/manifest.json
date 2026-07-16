@@ -1,0 +1,658 @@
+{
+  "images": {
+    "27857f_ecc1e3dec7a049978794430d022fda05~mv2.jpg": {
+      "file": "brand/logo.jpg",
+      "w": 500,
+      "h": 500,
+      "bytes": 19745
+    },
+    "27857f_46c9af38e3c74759a6ce404a8d7437ec~mv2.jpg": {
+      "file": "hero-home.jpg",
+      "w": 2200,
+      "h": 1650,
+      "bytes": 525696
+    },
+    "27857f_1649545e3dc24065be4d198e4f6e5d23~mv2.jpg": {
+      "file": "home-living-kitchen.jpg",
+      "w": 1085,
+      "h": 724,
+      "bytes": 125784
+    },
+    "27857f_4b1b52da7e6648e4ae7c121441b33a2c~mv2.jpg": {
+      "file": "home-kitchen.jpg",
+      "w": 1440,
+      "h": 1580,
+      "bytes": 230154
+    },
+    "27857f_6c1280b519184eb0b0d595f59994df95~mv2.jpg": {
+      "file": "home-feature.jpg",
+      "w": 1280,
+      "h": 622,
+      "bytes": 106175
+    },
+    "27857f_131bd952250a433da5afeaa0851f225f~mv2.jpg": {
+      "file": "service-new-construction.jpg",
+      "w": 1440,
+      "h": 1920,
+      "bytes": 357239
+    },
+    "27857f_d9450143bec84c2fb0aef880cf93ab19~mv2.jpeg": {
+      "file": "service-renovation.jpg",
+      "w": 1280,
+      "h": 854,
+      "bytes": 226396
+    },
+    "27857f_8d0331617f204e55b5ca435bc2d585b9~mv2.jpg": {
+      "file": "service-adu.jpg",
+      "w": 1600,
+      "h": 1069,
+      "bytes": 351780
+    },
+    "27857f_64bebdfa2acd4a22aae04869d62802ee~mv2.jpg": {
+      "file": "founders-matt-alexis.jpg",
+      "w": 1600,
+      "h": 2400,
+      "bytes": 480989
+    },
+    "27857f_7abec923a94341b1bd34cbdeba2a781e~mv2.jpg": {
+      "file": "portfolio/tacoma-dadu.jpg",
+      "w": 1400,
+      "h": 935,
+      "bytes": 234888
+    },
+    "27857f_8e1a064063944e1f93a88df727f7f2d2~mv2.jpg": {
+      "file": "portfolio/reconfigured-kitchen.jpg",
+      "w": 1400,
+      "h": 1050,
+      "bytes": 215017
+    },
+    "27857f_90ac795870bf4ffb9a13512439309add~mv2.jpeg": {
+      "file": "portfolio/front-of-house.jpg",
+      "w": 1400,
+      "h": 1050,
+      "bytes": 297717
+    },
+    "27857f_2a6f2769776f416bb61111d39ef5ab43~mv2.jpeg": {
+      "file": "portfolio/university-place.jpg",
+      "w": 1085,
+      "h": 724,
+      "bytes": 141156
+    },
+    "27857f_3435395b61aa489199ee248ee71f09e0~mv2.jpeg": {
+      "file": "portfolio/bremerton-living-room.jpg",
+      "w": 1280,
+      "h": 746,
+      "bytes": 105161
+    },
+    "27857f_a5db2f9ead0e40c89c5bf9fd296c2f67~mv2.jpeg": {
+      "file": "portfolio/proctor-cottage.jpg",
+      "w": 1280,
+      "h": 853,
+      "bytes": 128242
+    },
+    "27857f_fb6571435ad34c4e903ccf94d8f31455~mv2.jpeg": {
+      "file": "portfolio/oakbrook.jpg",
+      "w": 1280,
+      "h": 958,
+      "bytes": 364955
+    },
+    "27857f_edca23e3dacb4c95bb594b42d5082161~mv2.jpeg": {
+      "file": "portfolio/gig-harbor.jpg",
+      "w": 1280,
+      "h": 854,
+      "bytes": 141970
+    },
+    "27857f_f04bc5c4ac5a410c8d7efb8a06a9cd74~mv2.jpeg": {
+      "file": "prospect-house/prospect-exterior.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 561612
+    },
+    "27857f_753f9c481320493985338ce97f2052b7~mv2.png": {
+      "file": "prospect-house/prospect-exterior-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 975529
+    },
+    "27857f_8e9a4445b26e403a84dab19d50135533~mv2.png": {
+      "file": "prospect-house/prospect-exterior-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 598347
+    },
+    "27857f_b4f75789ee454306b335e411e17be984~mv2.jpeg": {
+      "file": "prospect-house/prospect-exterior-and-new-retaining-wall.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 679221
+    },
+    "27857f_14b1e1ed60544ea6a11fa47d9dbdb5b5~mv2.png": {
+      "file": "prospect-house/living-dining-room-before.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 336301
+    },
+    "27857f_4eee916c3bb145f5aa9a5fdc7c9af96c~mv2.jpg": {
+      "file": "prospect-house/living-dining-and-relocated-staircase.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 134907
+    },
+    "27857f_0c72b0f6524b4782aaee0a6b62e4a1d2~mv2.jpg": {
+      "file": "prospect-house/relocated-staircase-in-dining-room.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 202876
+    },
+    "27857f_09590585bc914befa828bd0d8422c321~mv2.jpg": {
+      "file": "prospect-house/relocated-staircase.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 267292
+    },
+    "27857f_99d45f38f6144b8bb2b1685e29b697a9~mv2.png": {
+      "file": "prospect-house/dining-room-and-entryway-before.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 428613
+    },
+    "27857f_f1cdbf0e07a74c4a9259a22128cb8c08~mv2.jpg": {
+      "file": "prospect-house/dining-room-and-entryway-2.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 194907
+    },
+    "27857f_4eef6e4c12e64a0c975a9a9768e75388~mv2.png": {
+      "file": "prospect-house/living-room-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 721731
+    },
+    "27857f_63aef13b389d442e87841eaa7761dc00~mv2.jpg": {
+      "file": "prospect-house/living-room-2.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 325034
+    },
+    "27857f_d4fa637f9c624ba182eb8344e4db9e45~mv2.jpg": {
+      "file": "prospect-house/living-room-and-entryway.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 187097
+    },
+    "27857f_f128a7d73916428f91e1098775e25bdd~mv2.png": {
+      "file": "prospect-house/hallway-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 516047
+    },
+    "27857f_faa1c338374b471ab7c3a8d468f8ca98~mv2.jpg": {
+      "file": "prospect-house/hallway-2.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 236779
+    },
+    "27857f_28530f3be43b436eba1cc7e3d6fa33fa~mv2.png": {
+      "file": "prospect-house/furnace-nook-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 557129
+    },
+    "27857f_803b44f0d3354f628bf206de99378541~mv2.jpg": {
+      "file": "prospect-house/new-powder-bath-previously-the-furnace-nook.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 347168
+    },
+    "27857f_47bf2af107ca4381ba365275c4de9fa9~mv2.jpg": {
+      "file": "prospect-house/new-powder-bath.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 285170
+    },
+    "27857f_e89d2233280c43fe95623e0d393eab86~mv2.png": {
+      "file": "prospect-house/only-bathroom-in-the-house-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 488191
+    },
+    "27857f_4c6fc664eb1c4332b9438545694de8f2~mv2.jpg": {
+      "file": "prospect-house/hallway-to-primary-suite-left-and-new-powder-bath.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 317664
+    },
+    "27857f_3fdcbbec0b6844299dd27dc10ca710bf~mv2.png": {
+      "file": "prospect-house/primary-suite-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 808117
+    },
+    "27857f_9aa110f16b094e2a84c8c191975de9bd~mv2.jpg": {
+      "file": "prospect-house/primary-suite-2.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 482361
+    },
+    "27857f_7759c990efe64085aba44630520234bc~mv2.jpg": {
+      "file": "prospect-house/primary-suite-3.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 290003
+    },
+    "27857f_2b9b1e945a774442a2770aca568f5993~mv2.jpg": {
+      "file": "prospect-house/primary-suite-4.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 397232
+    },
+    "27857f_ab72d0fc357648a3af1b7eb8c044def5~mv2.jpg": {
+      "file": "prospect-house/new-primary-bathroom.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 435206
+    },
+    "27857f_d8c3c6f0c54d4dd388b4ce86a6fa3ec5~mv2.jpg": {
+      "file": "prospect-house/new-primary-bathroom-2.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 487847
+    },
+    "27857f_09c652e60611459db1a5fb7b50a154f2~mv2.jpg": {
+      "file": "prospect-house/new-primary-bathroom-3.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 496134
+    },
+    "27857f_741f677d1fb9437593b8b08dca0e75e1~mv2.jpg": {
+      "file": "prospect-house/new-primary-bathroom-4.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 270809
+    },
+    "27857f_9e3184466e744f0dac24fc2a2746d9d2~mv2.png": {
+      "file": "prospect-house/kitchen-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 629516
+    },
+    "27857f_3778abc36509415ba36c801a23ec80a4~mv2.jpg": {
+      "file": "prospect-house/kitchen-2.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 495508
+    },
+    "27857f_73b2701e6d15497eb44656a25aa38b00~mv2.png": {
+      "file": "prospect-house/kitchen-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 684556
+    },
+    "27857f_aff153ec4bc14efa82e8e3987907cf95~mv2.jpg": {
+      "file": "prospect-house/kitchen-4.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 250854
+    },
+    "27857f_444c4cfa2ef14b7fa0bd6b11eec70b40~mv2.png": {
+      "file": "prospect-house/kitchen-and-staircase-before.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 320125
+    },
+    "27857f_d3280a47b8524790b34455ce628a0811~mv2.jpg": {
+      "file": "prospect-house/kitchen-5.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 275512
+    },
+    "27857f_2700b664acf243f486344fb8d4396a9f~mv2.png": {
+      "file": "prospect-house/staircase-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 493092
+    },
+    "27857f_30cd42a4e4854b298c8c0a2981d0f063~mv2.jpg": {
+      "file": "prospect-house/kitchen-6.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 464613
+    },
+    "27857f_b63e945f8da44736bc6976dfb4ce48e3~mv2.jpg": {
+      "file": "prospect-house/kitchen-7.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 350291
+    },
+    "27857f_1449170d565c46c48ba2a16f7299c7c0~mv2.jpg": {
+      "file": "prospect-house/kitchen-8.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 434974
+    },
+    "27857f_b87c980de6cb4a59bff1d5cb30182038~mv2.jpg": {
+      "file": "prospect-house/kitchen-9.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 268085
+    },
+    "27857f_065027865158437b85e871d531f81de0~mv2.png": {
+      "file": "prospect-house/bedroom-2-before.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 284106
+    },
+    "27857f_659b353d301c48129f63c1c7371c5060~mv2.jpg": {
+      "file": "prospect-house/bedroom-2-2.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 130261
+    },
+    "27857f_817c4b1e8c194b6cb4d7cdcd48c07e22~mv2.jpg": {
+      "file": "prospect-house/bedroom-2-3.jpg",
+      "w": 836,
+      "h": 627,
+      "bytes": 39729
+    },
+    "27857f_c6f6ce159a21410381c0207633a5c6f3~mv2.jpg": {
+      "file": "prospect-house/bedroom-2-4.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 276517
+    },
+    "27857f_72d5adf6e30445efb7fc91e59d8b51e0~mv2.png": {
+      "file": "prospect-house/bedroom-3-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 408307
+    },
+    "27857f_ad452a91b0c1493a8f2b871fbaa91c9e~mv2.jpg": {
+      "file": "prospect-house/bedroom-3-2.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 128675
+    },
+    "27857f_c56153ed33504df7aa6a8461186508a6~mv2.jpg": {
+      "file": "prospect-house/bedroom-3-3.jpg",
+      "w": 1600,
+      "h": 1200,
+      "bytes": 129343
+    },
+    "27857f_6d50636579254a0e9c05b017b30564b1~mv2.jpg": {
+      "file": "prospect-house/bedroom-3-4.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 242346
+    },
+    "27857f_70782f5499d6416199fef5eccfa7b6da~mv2.jpg": {
+      "file": "prospect-house/new-upstairs-bathroom.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 290535
+    },
+    "27857f_f736dbed425e4bf295baf7d0bade62fd~mv2.jpg": {
+      "file": "prospect-house/new-upstairs-bathroom-2.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 255047
+    },
+    "27857f_d398f33c8c744244bb2ce49ebf91e529~mv2.png": {
+      "file": "prospect-house/bedroom-4-before.jpg",
+      "w": 1600,
+      "h": 2133,
+      "bytes": 455601
+    }
+  },
+  "prospect_order": [
+    {
+      "file": "prospect-house/prospect-exterior.jpg",
+      "alt": "Prospect Exterior",
+      "before": false
+    },
+    {
+      "file": "prospect-house/prospect-exterior-before.jpg",
+      "alt": "Prospect Exterior - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/prospect-exterior-before.jpg",
+      "alt": "Prospect Exterior - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/prospect-exterior-and-new-retaining-wall.jpg",
+      "alt": "Prospect Exterior and New Retaining Wall",
+      "before": false
+    },
+    {
+      "file": "prospect-house/living-dining-room-before.jpg",
+      "alt": "Living + Dining Room - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/living-dining-and-relocated-staircase.jpg",
+      "alt": "Living, Dining, and Relocated Staircase",
+      "before": false
+    },
+    {
+      "file": "prospect-house/relocated-staircase-in-dining-room.jpg",
+      "alt": "Relocated Staircase in Dining Room",
+      "before": false
+    },
+    {
+      "file": "prospect-house/relocated-staircase.jpg",
+      "alt": "Relocated Staircase",
+      "before": false
+    },
+    {
+      "file": "prospect-house/dining-room-and-entryway-before.jpg",
+      "alt": "Dining Room and Entryway - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/dining-room-and-entryway-2.jpg",
+      "alt": "Dining Room and Entryway",
+      "before": false
+    },
+    {
+      "file": "prospect-house/living-room-before.jpg",
+      "alt": "Living Room - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/living-room-2.jpg",
+      "alt": "Living Room",
+      "before": false
+    },
+    {
+      "file": "prospect-house/living-room-and-entryway.jpg",
+      "alt": "Living Room and Entryway",
+      "before": false
+    },
+    {
+      "file": "prospect-house/hallway-before.jpg",
+      "alt": "Hallway - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/hallway-2.jpg",
+      "alt": "Hallway",
+      "before": false
+    },
+    {
+      "file": "prospect-house/furnace-nook-before.jpg",
+      "alt": "Furnace Nook - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/new-powder-bath-previously-the-furnace-nook.jpg",
+      "alt": "New Powder Bath (previously the furnace nook)",
+      "before": false
+    },
+    {
+      "file": "prospect-house/new-powder-bath.jpg",
+      "alt": "New Powder Bath",
+      "before": false
+    },
+    {
+      "file": "prospect-house/only-bathroom-in-the-house-before.jpg",
+      "alt": "Only Bathroom in the House - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/hallway-to-primary-suite-left-and-new-powder-bath.jpg",
+      "alt": "Hallway to Primary Suite (left) and New Powder Bath",
+      "before": false
+    },
+    {
+      "file": "prospect-house/primary-suite-before.jpg",
+      "alt": "Primary Suite - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/primary-suite-2.jpg",
+      "alt": "Primary Suite",
+      "before": false
+    },
+    {
+      "file": "prospect-house/primary-suite-3.jpg",
+      "alt": "Primary Suite",
+      "before": false
+    },
+    {
+      "file": "prospect-house/primary-suite-4.jpg",
+      "alt": "Primary Suite",
+      "before": false
+    },
+    {
+      "file": "prospect-house/new-primary-bathroom.jpg",
+      "alt": "New Primary Bathroom",
+      "before": false
+    },
+    {
+      "file": "prospect-house/new-primary-bathroom-2.jpg",
+      "alt": "New Primary Bathroom",
+      "before": false
+    },
+    {
+      "file": "prospect-house/new-primary-bathroom-3.jpg",
+      "alt": "New Primary Bathroom",
+      "before": false
+    },
+    {
+      "file": "prospect-house/new-primary-bathroom-4.jpg",
+      "alt": "New Primary Bathroom",
+      "before": false
+    },
+    {
+      "file": "prospect-house/kitchen-before.jpg",
+      "alt": "Kitchen - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/kitchen-2.jpg",
+      "alt": "Kitchen",
+      "before": false
+    },
+    {
+      "file": "prospect-house/kitchen-before.jpg",
+      "alt": "Kitchen - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/kitchen-4.jpg",
+      "alt": "Kitchen",
+      "before": false
+    },
+    {
+      "file": "prospect-house/kitchen-and-staircase-before.jpg",
+      "alt": "Kitchen and Staircase - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/kitchen-5.jpg",
+      "alt": "Kitchen",
+      "before": false
+    },
+    {
+      "file": "prospect-house/staircase-before.jpg",
+      "alt": "Staircase - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/kitchen-6.jpg",
+      "alt": "Kitchen",
+      "before": false
+    },
+    {
+      "file": "prospect-house/kitchen-7.jpg",
+      "alt": "Kitchen",
+      "before": false
+    },
+    {
+      "file": "prospect-house/kitchen-8.jpg",
+      "alt": "Kitchen",
+      "before": false
+    },
+    {
+      "file": "prospect-house/kitchen-9.jpg",
+      "alt": "Kitchen",
+      "before": false
+    },
+    {
+      "file": "prospect-house/bedroom-2-before.jpg",
+      "alt": "Bedroom 2 - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/bedroom-2-2.jpg",
+      "alt": "Bedroom 2",
+      "before": false
+    },
+    {
+      "file": "prospect-house/bedroom-2-3.jpg",
+      "alt": "Bedroom 2",
+      "before": false
+    },
+    {
+      "file": "prospect-house/bedroom-2-4.jpg",
+      "alt": "Bedroom 2",
+      "before": false
+    },
+    {
+      "file": "prospect-house/bedroom-3-before.jpg",
+      "alt": "Bedroom 3 - Before",
+      "before": true
+    },
+    {
+      "file": "prospect-house/bedroom-3-2.jpg",
+      "alt": "Bedroom 3",
+      "before": false
+    },
+    {
+      "file": "prospect-house/bedroom-3-3.jpg",
+      "alt": "Bedroom 3",
+      "before": false
+    },
+    {
+      "file": "prospect-house/bedroom-3-4.jpg",
+      "alt": "Bedroom 3",
+      "before": false
+    },
+    {
+      "file": "prospect-house/new-upstairs-bathroom.jpg",
+      "alt": "New Upstairs Bathroom",
+      "before": false
+    },
+    {
+      "file": "prospect-house/new-upstairs-bathroom-2.jpg",
+      "alt": "New Upstairs Bathroom",
+      "before": false
+    },
+    {
+      "file": "prospect-house/bedroom-4-before.jpg",
+      "alt": "Bedroom 4 - Before",
+      "before": true
+    }
+  ]
+}
