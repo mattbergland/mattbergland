@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post — mattberg.land</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script>
+        // Dark mode: apply saved preference before render to prevent flash
+        (function() {
+            var saved = localStorage.getItem('darkMode');
+            if (saved === 'true' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        .post-article {
+            max-width: 720px;
+            margin: 2rem auto 4rem;
+            padding: 0 1rem;
+        }
+
+        .post-article .section-header {
+            margin-bottom: 0.5rem;
+        }
+
+        .post-article h1 {
+            color: var(--text-color);
+        }
+
+        .post-article .post-meta {
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
+
+        .post-body {
+            color: var(--text-color);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .post-state {
+            color: var(--gray-medium);
+            padding: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="nav-logo">mattberg.land</a>
+            <div class="nav-links">
+                <a href="projects.html" class="nav-link">Projects</a>
+                <a href="index.html#blog" class="nav-link">Blog</a>
+                <button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode">
+                    <i class="fa-solid fa-moon" id="darkIcon"></i>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <article class="post-article">
+            <a href="index.html#blog" class="back-link">
+                <i class="fa-solid fa-arrow-left"></i> Blog
+            </a>
+            <div id="post-state" class="post-state">Loading post...</div>
+            <div id="post-content" hidden>
+                <div class="section-header">
+                    <h1 id="post-subject"></h1>
+                </div>
+                <p class="post-meta">
+                    <span class="post-date" id="post-date"></span>
+                    <span id="post-from"></span>
+                </p>
+                <div class="post-body" id="post-body"></div>
+            </div>
+        </article>
+    </main>
+
+    <footer>
+        <div class="social-footer">
+            <h3>Follow along for community tips, event highlights, and success stories</h3>
+            <div class="arrow-container" id="arrowContainer" aria-hidden="true">
+                <svg class="down-arrow arrow-1" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <filter id="roughen" x="-10%" y="-10%" width="120%" height="120%">
+                            <feTurbulence type="turbulence" baseFrequency="0.04" numOctaves="3" result="noise" seed="5" />
+                            <feDisplacementMap in="SourceGraphic" in2="noise" scale="1.2" xChannelSelector="R" yChannelSelector="G" />
+                        </filter>
+                    </defs>
+                    <path class="arrow-shaft" d="M12 2 C11.5 8, 12.5 14, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <svg class="down-arrow arrow-2" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-shaft" d="M12 2 C12.5 9, 11.5 15, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+                <svg class="down-arrow arrow-3" viewBox="0 0 24 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path class="arrow-shaft" d="M12 2 C11.8 7, 12.3 13, 12 22" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" filter="url(#roughen)" />
+                    <path class="arrow-tip" d="M6 18 L12 26 L18 18" stroke="var(--text-color)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                </svg>
+            </div>
+            <div class="social-links">
+                <a href="https://x.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://youtube.com/@mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+                <a href="https://linkedin.com/in/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin"></i></a>
+                <a href="https://instagram.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>mattberg.land 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        (function() {
+            var POSTBOX_API = 'https://postbox-seven.vercel.app/api';
+            var params = new URLSearchParams(window.location.search);
+            var id = params.get('id');
+            var state = document.getElementById('post-state');
+            var content = document.getElementById('post-content');
+            var subject = document.getElementById('post-subject');
+            var date = document.getElementById('post-date');
+            var from = document.getElementById('post-from');
+            var body = document.getElementById('post-body');
+
+            function showError() {
+                state.textContent = 'Post not found';
+                content.hidden = true;
+            }
+
+            if (!id) {
+                showError();
+                return;
+            }
+
+            fetch(POSTBOX_API + '/posts/' + encodeURIComponent(id))
+                .then(function(response) {
+                    if (!response.ok) throw new Error('Post not found');
+                    return response.json();
+                })
+                .then(function(post) {
+                    var postDate = new Date(post.date);
+                    subject.textContent = post.subject || '(no subject)';
+                    date.textContent = postDate.toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric',
+                        year: 'numeric'
+                    });
+                    from.textContent = post.from || '';
+                    body.textContent = post.body || '';
+                    document.title = (post.subject || 'Post') + ' — mattberg.land';
+                    state.hidden = true;
+                    content.hidden = false;
+                })
+                .catch(showError);
+        })();
+    </script>
+
+    <script>
+        // Dark mode toggle
+        (function() {
+            var toggle = document.getElementById('darkModeToggle');
+            var icon = document.getElementById('darkIcon');
+            function updateIcon() {
+                var isDark = document.documentElement.classList.contains('dark');
+                icon.className = isDark ? 'fa-solid fa-sun' : 'fa-solid fa-moon';
+            }
+            updateIcon();
+            toggle.addEventListener('click', function() {
+                document.documentElement.classList.toggle('dark');
+                var isDark = document.documentElement.classList.contains('dark');
+                localStorage.setItem('darkMode', isDark);
+                updateIcon();
+            });
+        })();
+
+        // Animate arrow on scroll into view
+        (function() {
+            var arrow = document.getElementById('arrowContainer');
+            if (!arrow) return;
+            var observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        arrow.classList.add('animate');
+                        observer.unobserve(arrow);
+                    }
+                });
+            }, { threshold: 0.5 });
+            observer.observe(arrow);
+        })();
+    </script>
+</body>
+</html>
