@@ -170,6 +170,8 @@
         </section>
         <script>
             (function() {
+                var POSTBOX_API = 'https://postbox-seven.vercel.app/api';
+
                 function escapeHtml(str) {
                     if (!str) return '';
                     return String(str)
@@ -179,40 +181,26 @@
                         .replace(/"/g, '&quot;')
                         .replace(/'/g, '&#39;');
                 }
-                function safeUrl(url) {
-                    if (!url) return '#';
-                    var u = String(url).trim();
-                    if (u.indexOf('https://') === 0 || u.indexOf('http://') === 0) return u;
-                    return '#';
-                }
-                var SUBSTACK_FEED = 'https://mattbergland.substack.com/feed';
-                var RSS2JSON_URL = 'https://api.rss2json.com/v1/api.json?rss_url=' + encodeURIComponent(SUBSTACK_FEED);
                 var container = document.getElementById('blog-posts');
-                fetch(RSS2JSON_URL)
-                    .then(function(res) { return res.json(); })
-                    .then(function(data) {
-                        if (data.status !== 'ok' || !data.items || data.items.length === 0) {
-                            container.innerHTML = '<div class="blog-empty"><p>New posts coming soon. Subscribe on <a href="https://mattbergland.substack.com" target="_blank">Substack</a>.</p></div>';
+                fetch(POSTBOX_API + '/posts')
+                    .then(function(res) {
+                        if (!res.ok) throw new Error('Unable to load posts');
+                        return res.json();
+                    })
+                    .then(function(posts) {
+                        if (!Array.isArray(posts) || posts.length === 0) {
+                            container.innerHTML = '<div class="blog-empty"><p>No posts yet.</p></div>';
                             return;
                         }
-                        container.innerHTML = data.items.slice(0, 6).map(function(item) {
-                            var date = new Date(item.pubDate);
+                        container.innerHTML = posts.map(function(post) {
+                            var date = new Date(post.date);
                             var dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-                            var desc = item.description || '';
-                            var plainText = desc.replace(/<[^>]*>/g, '').substring(0, 120);
-                            if (desc.replace(/<[^>]*>/g, '').length > 120) plainText += '...';
-                            var safeLink = safeUrl(item.link);
-                            var safeTitle = escapeHtml(item.title);
-                            var safeThumbnail = escapeHtml(item.thumbnail);
-                            var thumbnailHtml = '';
-                            if (item.thumbnail) {
-                                thumbnailHtml = '<img class="blog-card-image" src="' + safeThumbnail + '" alt="' + safeTitle + '" />';
-                            }
-                            return '<a href="' + escapeHtml(safeLink) + '" target="_blank" class="guide-card">' + thumbnailHtml + '<div class="guide-header"><span class="post-date">' + escapeHtml(dateStr) + '</span><h3>' + safeTitle + '</h3><p>' + escapeHtml(plainText) + '</p></div></a>';
+                            var postUrl = 'post.html?id=' + encodeURIComponent(post.id);
+                            return '<a href="' + escapeHtml(postUrl) + '" class="guide-card"><div class="guide-header"><span class="post-date">' + escapeHtml(dateStr) + '</span><h3>' + escapeHtml(post.subject) + '</h3><p>' + escapeHtml(post.excerpt) + '</p></div></a>';
                         }).join('');
                     })
                     .catch(function() {
-                        container.innerHTML = '<div class="blog-empty"><p>New posts coming soon. Subscribe on <a href="https://mattbergland.substack.com" target="_blank">Substack</a>.</p></div>';
+                        container.innerHTML = '<div class="blog-empty"><p>No posts yet.</p></div>';
                     });
             })();
         </script>
