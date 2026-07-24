@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>LEBRON IN PHILLY!!! | Sixers Fan Starter Zone</title>
+  <style>
+    :root{--red:#ed174c;--blue:#006bb6;--navy:#002b5c;--yellow:#fff200;--ink:#180b25}
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;background:#64d7d2;color:var(--ink);font-family:"Comic Sans MS","Comic Neue",cursive;font-size:18px;line-height:1.35;overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.2;background-image:radial-gradient(#fff 1px,transparent 1px);background-size:11px 11px;z-index:20}
+    a{color:#0017aa;text-decoration:underline;font-weight:bold}
+    .wrap{width:min(1120px,calc(100% - 26px));margin:auto}
+    header{background:var(--navy);border-bottom:10px ridge var(--red);padding:14px 0 16px;position:relative}
+    .topline{display:flex;justify-content:space-between;align-items:center;gap:10px;color:#fff;font-size:14px}
+    .blink{animation:blink 1s steps(2,start) infinite;color:var(--yellow);font-weight:bold}
+    @keyframes blink{50%{visibility:hidden}}
+    .wordart{font-weight:900;text-align:center;letter-spacing:1px;font-size:clamp(39px,8vw,86px);line-height:.95;margin:15px 0 8px;color:#fff;
+      background:linear-gradient(180deg,#fff 0 18%,#58d9ff 19% 42%,#fff200 43% 62%,#ff4a72 63% 100%);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+      text-shadow:4px 4px 0 #000,7px 7px 0 var(--red),-2px -2px 0 #fff}
+    .subhead{text-align:center;color:#fff;font-size:clamp(16px,3vw,25px);font-weight:bold}
+    .marquee{overflow:hidden;background:var(--yellow);border:5px outset #fff;color:#000;margin-top:12px;white-space:nowrap;font-size:19px;font-weight:bold}
+    .marquee span{display:inline-block;padding-left:100%;animation:scroll 18s linear infinite}
+    @keyframes scroll{to{transform:translateX(-100%)}}
+    nav{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;background:#ff70c8;padding:9px;border:5px groove #fff}
+    nav a{background:#fff;padding:5px 10px;color:#001a76;border:3px outset #fff;font-size:15px}
+    main{padding:20px 0 40px}
+    .hero-grid{display:grid;grid-template-columns:1.5fr 1fr;gap:16px;align-items:center}
+    .speech{background:#fff;border:6px solid #000;border-radius:35% 45% 38% 48%;padding:23px;position:relative;box-shadow:9px 10px 0 var(--red);transform:rotate(-1deg)}
+    .speech:after{content:"";position:absolute;bottom:-31px;left:22%;border-width:22px 27px 0 0;border-style:solid;border-color:#000 transparent transparent transparent;transform:rotate(8deg)}
+    .speech h2{font-size:clamp(28px,5vw,53px);margin:0 0 7px;color:var(--red);text-shadow:3px 3px #58d9ff}
+    .siren{font-size:27px}
+    .art{background:#ffe950;border:8px double #000;box-shadow:9px 9px 0 #a80071;transform:rotate(3deg);padding:8px}
+    .art svg{display:block;width:100%;height:auto}
+    .note{background:#fff69b;border:4px dashed #111;padding:9px 13px;transform:rotate(-2deg);margin:22px auto;max-width:760px}
+    .section{margin:28px 0;padding:20px;background:#fdfdf5;border:7px solid var(--navy);box-shadow:10px 10px 0 var(--red);position:relative}
+    .section:nth-of-type(even){transform:rotate(.45deg);background:#fff8a8}
+    .section:nth-of-type(odd){transform:rotate(-.35deg)}
+    .section h2{margin:0 0 13px;color:var(--red);font-size:clamp(27px,5vw,44px);text-shadow:3px 3px 0 #59d7ff,5px 5px 0 #111;letter-spacing:1px}
+    .section h3{color:var(--blue);font-size:25px;margin:14px 0 4px;text-decoration:underline wavy var(--red)}
+    .columns{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .card{border:4px dotted var(--red);padding:12px;background:#fff;min-height:100%}
+    ul{padding-left:25px}li{margin:7px 0}li::marker{color:var(--red)}
+    .facts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;text-align:center}
+    .fact{padding:11px 6px;border:4px solid #000;background:#67e7ff;transform:rotate(-2deg);font-weight:bold}.fact:nth-child(2){background:#ff94cf;transform:rotate(2deg)}.fact:nth-child(3){background:#fff200;transform:rotate(-1deg)}
+    .big{font-size:31px;color:var(--navy);display:block}
+    .process{font-size:22px;color:#74004d;background:#c8ff70;border:5px dashed #000;padding:15px;transform:rotate(1deg)}
+    .bubble-row{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+    .bubble{background:#fff;border:4px solid #000;border-radius:50%;padding:14px 17px;max-width:260px;position:relative;box-shadow:4px 4px #ff5caa}
+    .bubble:after{content:"✦";position:absolute;right:-18px;bottom:-16px;color:var(--red);font-size:28px}
+    .rules{counter-reset:rule;list-style:none;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .rules li{counter-increment:rule;border:4px solid #000;background:#ffdcfa;padding:10px 12px 10px 45px;position:relative}
+    .rules li:before{content:counter(rule);position:absolute;left:9px;top:4px;font-size:32px;color:var(--red);font-weight:bold}
+    .glossary{display:grid;grid-template-columns:repeat(3,1fr);gap:11px}.term{border:4px solid #000;padding:10px;background:#b6f3ff;transform:rotate(1deg)}.term:nth-child(3n){background:#ffb6dc;transform:rotate(-2deg)}.term b{color:var(--red);font-size:21px}
+    .counter{display:inline-block;background:#000;color:#62ff00;padding:4px 9px;font-family:monospace;letter-spacing:3px;border:4px inset #aaa}
+    .footer{background:#25004c;color:#fff;padding:25px 0;border-top:12px ridge var(--yellow);text-align:center}.footer a{color:#63edff}.construction{font-size:28px;color:#fff200;animation:blink 1.2s steps(2,start) infinite}
+    button{font:inherit;font-weight:bold;background:#ffef00;border:5px outset #fff;padding:8px 15px;cursor:pointer;color:#000}button:active{border-style:inset}
+    .stars{color:#ff008c;letter-spacing:8px;font-size:29px;text-shadow:2px 2px #fff}
+    @media(max-width:700px){.hero-grid,.columns{grid-template-columns:1fr}.facts,.glossary{grid-template-columns:1fr 1fr}.rules{grid-template-columns:1fr}.section{box-shadow:6px 6px 0 var(--red);padding:14px}.topline{font-size:12px}.art{max-width:420px;margin:4px auto}}
+    @media(max-width:430px){.facts,.glossary{grid-template-columns:1fr}.wordart{font-size:42px}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="topline"><span>★ unofficial fan page ★ est. 2025-ish</span><span class="blink">⚠ HOT TRADE RUMOR ENERGY ⚠</span></div>
+      <div class="wordart">WELCOME TO<br>PHILLY, BRON!!!</div>
+      <div class="subhead">🚨 YOU LIKE LEBRON? NOW YOU LIKE THE SIXERS. HERE'S WHAT U NEED 2 KNOW 🚨</div>
+      <div class="marquee"><span>🏀 BREAKING: THE KING HAS ENTERED THE CITY OF BROTHERLY LOVE!!! GET YOUR CHEESESTEAK AND YOUR EMOTIONAL SUPPORT JERSEY!!! 🏀</span></div>
+    </div>
+  </header>
+  <nav>
+    <a href="#team">THE GUYS</a><a href="#history">OLD STUFF</a><a href="#process">THE PROCESS</a><a href="#city">PHILLY 101</a><a href="#rules">RULES 4 FANS</a><a href="#starter">LEBRON GLOSSARY</a>
+  </nav>
+  <main class="wrap">
+    <div class="hero-grid">
+      <div class="speech"><div class="siren">🚨🚨🚨 MAJOR BASKETBALL NEWS 🚨🚨🚨</div><h2>LEBRON IS A SIXER NOW???</h2><p>Maybe you followed LeBron from Cleveland, Miami, or Los Angeles. Congratulations: you are now legally required to learn what “wit” means and pretend you always loved the color red.</p><p><b>Scroll down, rookie.</b> This page contains facts, vibes, and at least one extremely questionable drawing.</p></div>
+      <div class="art" aria-label="Crude drawing of LeBron wearing a crown and Sixers jersey">
+        <svg viewBox="0 0 420 300" role="img"><rect width="420" height="300" fill="#fff"/><path d="M95 78 130 35l28 35 49-51 26 51 51-35-9 70H105Z" fill="#fff200" stroke="#000" stroke-width="8" stroke-linejoin="round"/><circle cx="201" cy="115" r="59" fill="#905127" stroke="#000" stroke-width="8"/><path d="M155 105q12-16 26 0M219 105q14-16 27 0M171 132q30 18 57 0" fill="none" stroke="#000" stroke-width="8"/><path d="M115 184q85-37 173 0l34 88H82Z" fill="#ed174c" stroke="#000" stroke-width="8"/><text x="149" y="245" font-size="49" font-family="Comic Sans MS" font-weight="bold" fill="#fff" stroke="#000" stroke-width="2">23</text><path d="M82 274q35-18 71 0M266 274q35-18 71 0" fill="none" stroke="#000" stroke-width="9"/><text x="18" y="292" font-size="18" font-family="Comic Sans MS">DRAWN WITH A MOUSE LOL</text></svg>
+      </div>
+    </div>
+    <div class="note">💡 <b>DISCLAIMER:</b> This is a fan-made “what if LeBron got traded to Philly” page. The basketball universe is weird. Please do not call your local Wawa to confirm the trade.</div>
+
+    <section class="section" id="team">
+      <h2>1. THE TEAM (THE GUYS)</h2>
+      <div class="columns"><div class="card"><h3>Basic Team Facts</h3><ul><li>The Philadelphia 76ers play in the <b>Eastern Conference</b>.</li><li>Home games happen at <b>Xfinity Mobile Arena</b> (formerly Wells Fargo Center) in South Philly.</li><li>Colors: <b>red, white, and blue</b> — like a flag that learned how to dunk.</li><li>Official mascot: <b>Franklin</b>, a dog. He is good. Do not ask what breed.</li></ul></div><div class="card"><h3>Current Big Deal Guys</h3><ul><li><b>Joel Embiid:</b> giant MVP center, comedian, and professional bucket.</li><li><b>Tyrese Maxey:</b> extremely fast guard with a smile that could power a city.</li><li><b>LeBron James:</b> new guy (in this totally real hypothetical), already knows where the cameras are.</li></ul></div></div>
+      <div class="facts"><div class="fact"><span class="big">76</span>years of confusing math</div><div class="fact"><span class="big">1</span>very good dog mascot</div><div class="fact"><span class="big">∞</span>reasons to yell</div></div>
+    </section>
+
+    <section class="section" id="history">
+      <h2>2. THE FRANCHISE (OLD STUFF THAT MATTERS)</h2>
+      <div class="columns"><div><h3>Timeline, but make it easy</h3><ul><li><b>1946:</b> Founded as the Syracuse Nationals.</li><li><b>1963:</b> Moved to Philadelphia. Smart choice. More cheesesteaks.</li><li><b>1955, 1967, 1983:</b> <b>3 championships.</b> Yes, banners are real even if your uncle tells stories too loudly.</li></ul></div><div><h3>Legends Hallway</h3><ul><li><b>Wilt Chamberlain:</b> scored 100 points in one game, because apparently defense was optional.</li><li><b>Julius “Dr. J” Erving:</b> dunk pioneer and hair icon.</li><li><b>Allen Iverson:</b> “PRACTICE?!” — tiny guard, gigantic attitude.</li><li><b>Charles Barkley:</b> round mound of rebound and elite TV yelling.</li><li><b>Moses Malone:</b> predicted “fo, fo, fo” for a playoff run.</li></ul></div></div>
+    </section>
+
+    <section class="section" id="process">
+      <h2>3. THE PROCESS</h2>
+      <div class="process"><b>Trust The Process</b> means: “We are collecting draft picks and losing games on purpose-ish, and someday this will all make sense.”<br><br>Sam Hinkie’s tanking era made fans learn advanced spreadsheet feelings. It created hope, memes, and the phrase <b>“Trust the Process”</b>, which you should say whenever anything looks bad. Flat tire? Trust the Process. Missed layup? Process. Forgot your password? Process.</div>
+      <div class="bubble-row"><div class="bubble">“We have a plan!”<br><small>— every fan in 2015</small></div><div class="bubble">“Was the plan good?”<br><small>— history, probably</small></div><div class="bubble">“TRUST IT ANYWAY.”</div></div>
+    </section>
+
+    <section class="section" id="city">
+      <h2>4. THE CITY (PHILLY 101)</h2>
+      <div class="columns"><div class="card"><h3>Eat these things</h3><ul><li><b>Cheesesteak:</b> ask for it “wit” or “witout” onions. Pat’s vs. Geno’s is a civic argument disguised as lunch.</li><li><b>Wawa:</b> convenience store, coffee shop, emergency room for your emotions.</li><li>Do not overthink it. Put meat and cheese in a roll. Become powerful.</li></ul></div><div class="card"><h3>See these things</h3><ul><li><b>Rocky steps:</b> run up them while music plays in your brain.</li><li><b>Liberty Bell:</b> historic, iconic, and famously broke. Relatable.</li><li><b>Gritty:</b> hockey mascot, orange cryptid, actual city soul.</li><li>When we win, people climb <b>greased poles</b>. This is not a metaphor.</li></ul></div></div>
+      <p class="stars">★ ☆ ★ ☆ ★ ☆ ★ ☆ ★</p><p><b>Important Philly history:</b> Fans once threw snowballs at Santa. Booing is love. If we boo you, you are family now. Please dress for weather and emotional damage.</p>
+    </section>
+
+    <section class="section" id="rules">
+      <h2>5. RULES 4 NEW FANS</h2>
+      <ol class="rules"><li>Boo everyone, including our own guys, if they stink. This is constructive criticism with volume.</li><li>Trust the Process. Say it like you mean it, even during a 20-point deficit.</li><li>Never say Boston is nice. You may say Boston has buildings. That is all.</li><li>Learn the difference between a foul and “the refs are doing crimes.”</li><li>Wear red, white, or blue. Bonus points for a weird vintage jersey.</li><li>Do not call it a sub. It is a hoagie. You are welcome.</li><li>When LeBron hits a three, yell “PHILLY SPECIAL” for no reason.</li><li>Respect Joel’s trolling. Respect Maxey’s speed. Respect Franklin’s dog powers.</li></ol>
+    </section>
+
+    <section class="section" id="starter">
+      <h2>6. LEBRON STARTER PACK GLOSSARY</h2>
+      <div class="glossary"><div class="term"><b>The King</b><br>LeBron’s royal nickname. In Philly, he now rules a kingdom of hoagies.</div><div class="term"><b>The Chosen One</b><br>A magazine said it. He kept being good. Case closed.</div><div class="term"><b>Taco Tuesday</b><br>A weekly food phrase turned into a whole lifestyle. Add hot sauce.</div><div class="term"><b>LeBronto</b><br>When LeBron destroys Toronto. Philly fans may now say this with confidence.</div><div class="term"><b>Heat Check</b><br>Taking a shot because you feel hot. Also check your cheesesteak temperature.</div><div class="term"><b>Playoff LeBron</b><br>Final boss mode. Please remain seated and keep your snacks nearby.</div><div class="term"><b>“I’m Coming Home”</b><br>Every few years the internet gets emotional. Bring tissues.</div><div class="term"><b>Legacy Talk</b><br>People debating rankings while the man is still playing. Extremely online behavior.</div><div class="term"><b>Sixers LeBron</b><br>Red jersey, Philly attitude, suspiciously good pass to Maxey.</div></div>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="wrap"><div class="construction">🚧 UNDER CONSTRUCTION 🚧</div><p class="stars">★ ☆ ★ ☆ ★</p><p>YOU ARE VISITOR NUMBER <span class="counter" id="counter">000076</span></p><p><a href="#team">[SIXERS RING]</a> — <a href="#city">[PHILLY RING]</a> — <a href="#starter">[LEBRON RING]</a></p><button id="guestbook">📖 SIGN MY GUESTBOOK</button><p><small>Best viewed in Internet Explorer 6 at 800x600 • Made with too much enthusiasm • No external images were harmed</small></p></div>
+  </footer>
+  <script>
+    const counter=document.getElementById("counter"); let visits=Number(localStorage.getItem("bronVisits")||76)+1; localStorage.setItem("bronVisits",visits); counter.textContent=String(visits).padStart(6,"0");
+    document.getElementById("guestbook").addEventListener("click",()=>alert("THANK U 4 SIGNING!!! Your message has been faxed to Franklin the Dog. He says: TRUST THE PROCESS 🐶🏀"));
+  </script>
+</body>
+</html>
