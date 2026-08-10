@@ -223,7 +223,8 @@ impl Hittable for Sphere {
 }
 pub struct Scene {
     pub objects: Vec<Box<dyn Hittable + Send + Sync>>,
-    pub background: Color,
+    pub horizon: Color,
+    pub zenith: Color,
 }
 impl Scene {
     pub fn hit(&self, r: Ray, t_min: f32, t_max: f32) -> Option<Hit> {
@@ -243,7 +244,7 @@ impl Scene {
                 center: Vec3::new(0.0, -100.5, -1.0),
                 radius: 100.0,
                 material: Material::Lambertian {
-                    albedo: Color::new(0.8, 0.8, 0.0),
+                    albedo: Color::new(0.24, 0.18, 0.13),
                 },
             }),
             Box::new(Sphere {
@@ -255,34 +256,36 @@ impl Scene {
                 center: Vec3::new(-1.0, 0.0, -1.0),
                 radius: 0.5,
                 material: Material::Lambertian {
-                    albedo: Color::new(0.1, 0.2, 0.5),
+                    albedo: Color::new(0.07, 0.18, 0.3),
                 },
             }),
             Box::new(Sphere {
                 center: Vec3::new(1.0, 0.0, -1.0),
                 radius: 0.5,
                 material: Material::Metal {
-                    albedo: Color::new(0.8, 0.6, 0.2),
+                    albedo: Color::new(0.8, 0.42, 0.12),
                     roughness: 0.08,
                 },
             }),
         ];
         Self {
             objects: o,
-            background: Color::new(0.55, 0.72, 1.0),
+            horizon: Color::new(0.72, 0.4, 0.22),
+            zenith: Color::new(0.04, 0.18, 0.62),
         }
     }
     pub fn lights() -> Self {
         let mut s = Self::classic();
         s.objects.push(Box::new(Sphere {
             center: Vec3::new(0.0, 1.3, -1.0),
-            radius: 0.25,
+            radius: 0.35,
             material: Material::Emissive {
-                color: Color::new(1.0, 0.72, 0.35),
+                color: Color::new(1.0, 0.32, 0.08),
                 strength: 5.0,
             },
         }));
-        s.background = Color::new(0.025, 0.035, 0.06);
+        s.horizon = Color::new(0.035, 0.022, 0.018);
+        s.zenith = Color::new(0.008, 0.012, 0.02);
         s
     }
 }
@@ -396,10 +399,7 @@ fn radiance(r: Ray, scene: &Scene, rng: &mut Rng, depth: u32) -> (Color, u32) {
     }
     let unit = r.direction.unit();
     let t = 0.5 * (unit.y + 1.0);
-    (
-        Color::new(1.0, 1.0, 1.0) * (1.0 - t) + scene.background * t,
-        1,
-    )
+    (scene.horizon * (1.0 - t) + scene.zenith * t, 1)
 }
 pub const CAMERA_SETTINGS: CameraSettings = CameraSettings {
     fov: 55.0,
@@ -495,7 +495,13 @@ impl Renderer {
         out.reserve(self.pixels.len() * 4);
         for c in &self.pixels {
             let scale = 1.0 / self.samples.max(1) as f32;
-            let g = (*c * scale).clamp(0.0, 1.0);
+            let radiance = *c * scale;
+            let mapped = Color::new(
+                radiance.x / (1.0 + radiance.x),
+                radiance.y / (1.0 + radiance.y),
+                radiance.z / (1.0 + radiance.z),
+            );
+            let g = mapped.clamp(0.0, 1.0);
             out.extend([
                 (g.x.sqrt() * 255.999) as u8,
                 (g.y.sqrt() * 255.999) as u8,
@@ -593,7 +599,7 @@ mod tests {
         r.render_pass(7);
         let rgba = r.rgba();
         let sum: u64 = rgba.iter().map(|v| *v as u64).sum();
-        assert_eq!(sum, 77963);
+        assert_eq!(sum, 51683);
     }
     #[test]
     fn rendered_pixels_are_finite_and_non_negative() {
