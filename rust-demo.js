@@ -8,8 +8,13 @@ const resetButton = document.querySelector('#resetButton');
 const sampleCount = document.querySelector('#sampleCount');
 const passTime = document.querySelector('#passTime');
 const rayRate = document.querySelector('#rayRate');
-let wasm, width = 480, height = 270, maxSamples = 120, yaw = Math.PI / 2, pitch = 0.12;
+let wasm, width = 480, height = 270, maxSamples = 300, yaw = Math.PI / 2, pitch = 0.12;
 let dragging = false, lastX = 0, lastY = 0, running = false;
+
+function sampleBudget() {
+    const value = Number(samplesInput.value);
+    return Number.isFinite(value) && value >= 1 ? Math.floor(value) : 300;
+}
 
 async function loadWasm() {
     const response = await fetch('rust-demo.wasm');
@@ -22,6 +27,7 @@ async function loadWasm() {
     schedule();
 }
 function configure() {
+    maxSamples = sampleBudget();
     const scale = Number(scaleSelect.value);
     width = Math.max(160, Math.round(640 * scale));
     height = Math.round(width * 9 / 16);
@@ -60,8 +66,12 @@ function orbit(event) {
 canvas.addEventListener('pointerdown', e => { dragging = true; lastX = e.clientX; lastY = e.clientY; try { canvas.setPointerCapture(e.pointerId); } catch (_) {} });
 canvas.addEventListener('pointermove', orbit);
 canvas.addEventListener('pointerup', () => { dragging = false; });
-resetButton.addEventListener('click', () => { maxSamples = Math.max(1, Number(samplesInput.value) || 120); reset(); schedule(); });
+resetButton.addEventListener('click', () => { maxSamples = sampleBudget(); reset(); schedule(); });
 sceneSelect.addEventListener('change', () => { configure(); schedule(); });
 scaleSelect.addEventListener('change', () => { configure(); schedule(); });
-samplesInput.addEventListener('change', () => { maxSamples = Math.max(1, Number(samplesInput.value) || 120); });
+samplesInput.addEventListener('change', () => {
+    maxSamples = sampleBudget();
+    const count = wasm ? Number(wasm.exports.sample_count()) : Number(sampleCount.textContent);
+    if (maxSamples > count) schedule();
+});
 loadWasm().catch(error => { loading.textContent = 'The Rust renderer could not load. Please refresh and try again.'; console.error(error); });

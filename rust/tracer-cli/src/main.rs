@@ -1,6 +1,35 @@
 use rayon::prelude::*;
-use std::{env, fs::File, io::BufWriter, time::Instant};
+use std::{env, fs::File, io::BufWriter, process, time::Instant};
 use tracer::{Color, Renderer};
+
+fn print_usage() {
+    println!("tracer-cli [--width N] [--height N] [--samples N] [--scene 0|1] [--output PATH]");
+}
+
+fn usage_error(message: &str) -> ! {
+    eprintln!("error: {message}");
+    eprintln!(
+        "usage: tracer-cli [--width N] [--height N] [--samples N] [--scene 0|1] [--output PATH]"
+    );
+    process::exit(2);
+}
+
+fn next_value(args: &[String], index: &mut usize, flag: &str) -> String {
+    *index += 1;
+    args.get(*index)
+        .cloned()
+        .unwrap_or_else(|| usage_error(&format!("{flag} requires a value")))
+}
+
+fn parse_u32(args: &[String], index: &mut usize, flag: &str) -> u32 {
+    let value = next_value(args, index, flag);
+    value.parse().unwrap_or_else(|_| {
+        usage_error(&format!(
+            "{flag} expects an unsigned integer, got '{value}'"
+        ))
+    })
+}
+
 fn main() {
     let mut w = 1600u32;
     let mut h = 900u32;
@@ -11,31 +40,16 @@ fn main() {
     let mut i = 1;
     while i < a.len() {
         match a[i].as_str() {
-            "--width" => {
-                i += 1;
-                w = a[i].parse().unwrap()
-            }
-            "--height" => {
-                i += 1;
-                h = a[i].parse().unwrap()
-            }
-            "--samples" => {
-                i += 1;
-                samples = a[i].parse().unwrap()
-            }
-            "--scene" => {
-                i += 1;
-                scene = a[i].parse().unwrap()
-            }
-            "--output" => {
-                i += 1;
-                output = a[i].clone()
-            }
+            "--width" => w = parse_u32(&a, &mut i, "--width"),
+            "--height" => h = parse_u32(&a, &mut i, "--height"),
+            "--samples" => samples = parse_u32(&a, &mut i, "--samples"),
+            "--scene" => scene = parse_u32(&a, &mut i, "--scene"),
+            "--output" => output = next_value(&a, &mut i, "--output"),
             "--help" => {
-                println!("tracer-cli [--width N] [--height N] [--samples N] [--scene 0|1] [--output PATH]");
+                print_usage();
                 return;
             }
-            _ => {}
+            argument => usage_error(&format!("unrecognized argument '{argument}'")),
         }
         i += 1
     }
