@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <title>Rust Path Tracer — mattberg.land</title>
+    <script>(function(){var s=localStorage.getItem('darkMode');if(s==='true'||(!s&&matchMedia('(prefers-color-scheme: dark)').matches))document.documentElement.classList.add('dark')})();</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+<header><nav><a href="index.html" class="nav-logo">mattberg.land</a><div class="nav-links"><a href="projects.html" class="nav-link">Projects</a><a href="index.html#blog" class="nav-link">Blog</a><button class="dark-mode-toggle" id="darkModeToggle" aria-label="Toggle dark mode"><i class="fa-solid fa-moon" id="darkIcon"></i></button></div></nav></header>
+<main class="rust-demo-page">
+    <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Projects</a>
+    <section class="rust-hero"><p class="eyebrow">A Rust showcase</p><h1>Light, calculated<br><span class="highlight">one ray at a time.</span></h1><p class="rust-intro">A path tracer written from scratch in Rust, running directly in your browser through WebAssembly. Drag the image to orbit the camera and watch it settle into a picture.</p></section>
+    <section class="tracer-shell">
+        <div class="tracer-stage"><canvas id="tracerCanvas" width="640" height="360" aria-label="Progressive path-traced scene"></canvas><div id="loadingMessage" class="tracer-loading">Loading the Rust renderer…</div></div>
+        <div class="tracer-controls">
+            <label>Scene<select id="sceneSelect"><option value="0">Glass, metal &amp; sky</option><option value="1">Warm studio light</option></select></label>
+            <label>Resolution<select id="scaleSelect"><option value="0.5">Half — faster</option><option value="0.75" selected>Three-quarter</option><option value="1">Full — detailed</option></select></label>
+            <label>Max samples<input id="samplesInput" type="number" min="1" max="500" value="300"></label>
+            <button id="resetButton" class="contact-button">Reset render</button>
+            <div class="tracer-stats"><span><strong id="sampleCount">0</strong> samples</span><span><strong id="passTime">—</strong> ms/pass</span><span><strong id="rayRate">—</strong> Mrays/s</span></div>
+        </div>
+    </section>
+    <p class="tracer-note"><i class="fa-solid fa-arrows-left-right"></i> Drag across the image to orbit the camera. Every change clears the old light paths so there is no smearing.</p>
+</main>
+<footer><div class="social-footer"><h3>Follow along for community tips, event highlights, and success stories</h3><div class="social-links"><a href="https://x.com/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-x-twitter"></i></a><a href="https://linkedin.com/in/mattbergland" target="_blank" class="social-icon"><i class="fa-brands fa-linkedin"></i></a></div></div><div class="copyright"><p>mattberg.land 2024</p></div></footer>
+<script type="module" src="rust-demo.js"></script>
+<script>
+(function(){var t=document.getElementById('darkModeToggle'),i=document.getElementById('darkIcon');function u(){i.className=document.documentElement.classList.contains('dark')?'fa-solid fa-sun':'fa-solid fa-moon'}u();t.addEventListener('click',function(){document.documentElement.classList.toggle('dark');localStorage.setItem('darkMode',document.documentElement.classList.contains('dark'));u()})})();
+</script>
+</body>
+</html>

@@ -1380,3 +1380,31 @@ footer {
         gap: 1rem;
     }
 }
+
+/* Rust path tracer showcase */
+.rust-demo-page { max-width: 1200px; }
+.rust-hero { max-width: 760px; margin: 1rem 0 2.5rem; }
+.eyebrow { color: var(--primary-color); font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: .8rem; }
+.rust-hero h1 { font-size: clamp(2.4rem, 6vw, 4.5rem); line-height: 1.03; letter-spacing: -.06em; margin-bottom: 1.25rem; }
+.rust-intro { font-size: 1.08rem; max-width: 620px; opacity: .78; }
+.tracer-shell { display: grid; grid-template-columns: minmax(0, 1fr) 230px; gap: 1.25rem; align-items: start; }
+.tracer-stage { position: relative; background: #101318; border-radius: 12px; overflow: hidden; box-shadow: 0 18px 40px var(--shadow-color); }
+#tracerCanvas { width: 100%; display: block; aspect-ratio: 16 / 9; cursor: grab; image-rendering: auto; }
+#tracerCanvas:active { cursor: grabbing; }
+.tracer-loading { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; font-size: .9rem; background: #101318; }
+.tracer-controls { display: grid; gap: 1rem; padding: 1rem; border: 1px solid var(--card-border); border-radius: 12px; background: var(--card-bg); }
+.tracer-controls label { display: grid; gap: .35rem; font-size: .78rem; font-weight: 600; }
+.tracer-controls select, .tracer-controls input { width: 100%; border: 1px solid var(--card-border); border-radius: 6px; padding: .55rem; font: inherit; color: var(--text-color); background: var(--background-color); }
+.tracer-controls .contact-button { border: 0; cursor: pointer; font: inherit; font-weight: 600; padding: .7rem 1rem; }
+.tracer-stats { display: grid; gap: .4rem; border-top: 1px solid var(--card-border); padding-top: .8rem; font-size: .78rem; opacity: .78; }
+.tracer-stats strong { color: var(--primary-color); font-variant-numeric: tabular-nums; }
+.tracer-note { font-size: .82rem; opacity: .58; margin: 1rem 0 3rem; }
+@media (max-width: 768px) {
+    .tracer-shell { grid-template-columns: 1fr; }
+    .tracer-controls { grid-template-columns: repeat(2, 1fr); }
+    .tracer-stats { grid-column: 1 / -1; grid-template-columns: repeat(3, 1fr); border-top: 0; padding-top: 0; }
+}
+@media (max-width: 480px) {
+    .tracer-controls { grid-template-columns: 1fr; }
+    .tracer-stats { grid-column: auto; }
+}
