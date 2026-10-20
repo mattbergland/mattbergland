@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projects — mattberg.land</title>
+    <title>Projects — Things I've built | mattberg.land</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <script>
         // Dark mode: apply saved preference before render to prevent flash
         (function() {
@@ -20,137 +22,421 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
+        .projects-hero {
+            max-width: 640px;
+            margin: 1.5rem 0 3rem;
+        }
+
+        .projects-eyebrow {
+            display: inline-block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            background: #f0e0c8;
+            color: #1f2937;
+            padding: 0.3rem 0.75rem;
+            border-radius: 4px;
+            transform: rotate(-2deg);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            margin-bottom: 1.25rem;
+        }
+
+        html.dark .projects-eyebrow {
+            background: #3d3020;
+            color: var(--text-color);
+        }
+
+        .projects-hero h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .projects-lead {
+            font-size: 1.0625rem;
+            line-height: 1.6;
+            opacity: 0.7;
+            max-width: 520px;
+            margin-bottom: 1.75rem;
+        }
+
+        .surprise-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            min-height: 44px;
+            padding: 0.7rem 1.4rem;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--background-color);
+            background: var(--text-color);
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .surprise-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .surprise-btn:hover i {
+            animation: dice-roll 0.6s ease;
+        }
+
+        .surprise-btn:disabled {
+            cursor: progress;
+        }
+
+        @keyframes dice-roll {
+            to { transform: rotate(360deg); }
+        }
+
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3rem 2.25rem;
+            padding: 0.5rem 0.5rem 0;
         }
 
         .project-card {
-            background: var(--white);
-            border: 1px solid var(--card-border);
-            border-radius: 12px;
-            overflow: hidden;
-            text-decoration: none;
-            color: var(--text-color);
-            transition: all 0.2s ease;
-            box-shadow: 0 4px 6px -1px var(--shadow-color);
+            --note: #d4e8d0;
+            --tilt: 0deg;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            background: var(--note);
+            color: #1f2937;
+            border-radius: 12px;
+            padding: 0.75rem 0.75rem 0;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 10px 24px -12px rgba(0, 0, 0, 0.18);
+            transform: rotate(var(--tilt));
+            transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.25s ease;
+            animation: drop-in 0.6s cubic-bezier(.34, 1.4, .64, 1) both;
+            animation-delay: calc(var(--i, 0) * 80ms);
         }
 
-        .project-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px -2px var(--shadow-color);
-            border-color: var(--primary-color);
+        .project-card.note-green { --note: #d4e8d0; }
+        .project-card.note-tan   { --note: #f0e0c8; }
+        .project-card.note-blue  { --note: #ccdff0; }
+
+        html.dark .project-card { color: var(--text-color); }
+        html.dark .project-card.note-green { --note: #2a3d26; }
+        html.dark .project-card.note-tan   { --note: #3d3020; }
+        html.dark .project-card.note-blue  { --note: #1e2f3d; }
+
+        .project-card:hover,
+        .project-card:focus-within,
+        .project-card.is-spotlight {
+            transform: rotate(0deg) translateY(-6px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08), 0 22px 40px -16px rgba(0, 0, 0, 0.3);
+            z-index: 2;
         }
 
-        .project-card .project-image {
+        .project-card.is-spotlight {
+            outline: 3px solid var(--primary-color);
+            outline-offset: 5px;
+        }
+
+        @keyframes drop-in {
+            from { opacity: 0; transform: translateY(-24px) rotate(calc(var(--tilt) * -3)); }
+            to   { opacity: 1; transform: rotate(var(--tilt)); }
+        }
+
+        .tape {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            width: 84px;
+            height: 24px;
+            transform: translateX(-50%) rotate(calc(var(--tilt) * -2 - 2deg));
+            background: rgba(255, 252, 240, 0.85);
+            border-left: 2px dotted rgba(0, 0, 0, 0.08);
+            border-right: 2px dotted rgba(0, 0, 0, 0.08);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.14);
+            pointer-events: none;
+        }
+
+        html.dark .tape {
+            background: rgba(255, 255, 255, 0.14);
+        }
+
+        .project-shot {
+            display: block;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1600 / 1035;
+            background: rgba(255, 255, 255, 0.5);
+            box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.06);
+        }
+
+        .project-shot img {
             width: 100%;
-            height: 200px;
+            height: 100%;
             object-fit: cover;
             object-position: top;
             display: block;
+            transition: transform 0.4s ease;
         }
 
-        .project-card .project-info {
-            padding: 1.5rem;
-            padding-bottom: 1rem;
+        .project-card:hover .project-shot img {
+            transform: scale(1.04);
         }
 
-        .project-card .project-info h3 {
-            margin: 0 0 0.5rem 0;
-            font-size: 1.2rem;
-            font-weight: 600;
-            color: var(--text-color);
+        .project-info {
+            padding: 1rem 0.5rem 0.5rem;
+            flex: 1;
         }
 
-        .project-card .project-info p {
+        .project-info h3 {
+            margin: 0 0 0.35rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .project-info h3 a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .project-info h3 a:hover {
+            box-shadow: inset 0 -0.4em 0 0 var(--highlight-bg);
+        }
+
+        .project-info p {
             margin: 0;
             font-size: 0.95rem;
-            color: var(--text-color);
-            opacity: 0.8;
             line-height: 1.5;
+            opacity: 0.8;
         }
 
-        .vote-section {
+        .project-meta {
             display: flex;
             align-items: center;
-            padding: 0 1.5rem 1.25rem;
+            justify-content: space-between;
+            gap: 0.75rem;
+            padding: 0.5rem 0.5rem 0.9rem;
+        }
+
+        .project-domain {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: inherit;
+            opacity: 0.65;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            min-height: 40px;
+        }
+
+        .project-domain i {
+            font-size: 0.7rem;
+            transition: transform 0.2s ease;
+        }
+
+        .project-domain:hover {
+            opacity: 1;
+        }
+
+        .project-domain:hover i {
+            transform: translate(2px, -2px);
         }
 
         .vote-btn {
+            position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 0.4rem;
-            background: none;
-            border: 1.5px solid var(--card-border);
-            border-radius: 8px;
-            padding: 0.4rem 0.75rem;
+            gap: 0.45rem;
+            min-height: 40px;
+            padding: 0.45rem 0.85rem;
             font-family: 'Inter', sans-serif;
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--gray-medium);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: inherit;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1.5px solid rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
             cursor: pointer;
-            transition: all 0.15s ease;
-            text-decoration: none;
+            transition: border-color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+        }
+
+        html.dark .vote-btn {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.1);
         }
 
         .vote-btn:hover {
             border-color: var(--primary-color);
-            color: var(--primary-color);
-            background: rgba(255, 120, 73, 0.05);
-        }
-
-        .vote-btn.voted {
-            border-color: var(--primary-color);
-            color: var(--primary-color);
-            background: rgba(255, 120, 73, 0.08);
+            transform: translateY(-1px);
         }
 
         .vote-btn i {
             font-size: 0.8rem;
+            transition: transform 0.2s ease;
+        }
+
+        .vote-btn:hover i {
+            transform: translateY(-2px);
+        }
+
+        .vote-btn.voted {
+            border-color: var(--primary-color);
+            background: var(--highlight-bg);
+        }
+
+        .vote-btn.pop {
+            animation: vote-pop 0.4s cubic-bezier(.34, 1.56, .64, 1);
+        }
+
+        @keyframes vote-pop {
+            40% { transform: scale(1.18); }
+            100% { transform: scale(1); }
         }
 
         .vote-count {
             font-variant-numeric: tabular-nums;
         }
 
-        .total-votes-bar {
-            max-width: 1200px;
-            margin: 3rem auto 0;
-            padding: 0 20px;
+        .plus-one {
+            position: absolute;
+            left: 50%;
+            top: -4px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            pointer-events: none;
+            animation: float-up 0.8s ease-out forwards;
+        }
+
+        @keyframes float-up {
+            from { opacity: 1; transform: translate(-50%, 0); }
+            to   { opacity: 0; transform: translate(-50%, -28px); }
+        }
+
+        .next-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            gap: 0.5rem;
+            min-height: 280px;
+            padding: 2rem 1.5rem;
+            border: 2px dashed var(--gray-medium);
+            border-radius: 12px;
+            color: var(--text-color);
+            text-decoration: none;
+            opacity: 0.75;
+            transform: rotate(1deg);
+            transition: opacity 0.2s ease, transform 0.35s cubic-bezier(.34, 1.56, .64, 1), border-color 0.2s ease;
+            animation: drop-in 0.6s cubic-bezier(.34, 1.4, .64, 1) both;
+            animation-delay: calc(var(--i, 0) * 80ms);
+            --tilt: 1deg;
+        }
+
+        .next-card:hover {
+            opacity: 1;
+            transform: rotate(0deg) translateY(-6px);
+            border-color: var(--primary-color);
+        }
+
+        .next-card .next-icon {
+            font-size: 1.75rem;
+            margin-bottom: 0.25rem;
+            animation: simmer 2.4s ease-in-out infinite;
+        }
+
+        @keyframes simmer {
+            0%, 100% { transform: translateY(0) rotate(-6deg); }
+            50% { transform: translateY(-4px) rotate(6deg); }
+        }
+
+        .next-card h3 {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .next-card p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+            max-width: 240px;
+        }
+
+        .vote-tally {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+            margin: 4rem auto 0;
             text-align: center;
         }
 
-        .total-votes-bar .total-label {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            background: var(--gray-light);
-            border-radius: 99px;
-            padding: 0.6rem 1.5rem;
+        .tally-dots {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .tally-dots span {
+            width: 28px;
+            height: 8px;
+            border-radius: 4px;
+            background: #e5e7eb;
+            transition: background 0.3s ease;
+        }
+
+        html.dark .tally-dots span {
+            background: #2e2e2e;
+        }
+
+        .tally-dots span.on {
+            background: var(--primary-color);
+        }
+
+        .tally-text {
             font-size: 0.95rem;
             font-weight: 500;
-            color: var(--text-color);
         }
 
-        .total-votes-bar .total-label i {
-            color: var(--primary-color);
+        @media (max-width: 1024px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
-        .project-card .project-info h3 a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .project-card .project-info h3 a:hover {
-            color: var(--primary-color);
-        }
-
-        @media (max-width: 768px) {
+        @media (max-width: 640px) {
             .projects-grid {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+
+            .projects-hero h1 {
+                font-size: 1.85rem;
+            }
+
+            .next-card {
+                min-height: 200px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .project-card,
+            .next-card,
+            .next-card .next-icon,
+            .vote-btn.pop,
+            .plus-one,
+            .surprise-btn:hover i {
+                animation: none;
+            }
+
+            .project-card,
+            .next-card,
+            .project-shot img {
+                transition: none;
             }
         }
     </style>
@@ -174,99 +460,119 @@
             <a href="index.html" class="back-link">
                 <i class="fa-solid fa-arrow-left"></i> Home
             </a>
-            <div class="section-header">
-                <h2>My Projects</h2>
+
+            <div class="projects-hero">
+                <span class="projects-eyebrow">Side projects</span>
+                <h1>Things I've built <span class="highlight">just for fun.</span></h1>
+                <p class="projects-lead">Weekend builds, rabbit holes, and ideas that wouldn't leave me alone. Poke around and upvote your favorites.</p>
+                <button class="surprise-btn" id="surpriseBtn" type="button">
+                    <i class="fa-solid fa-dice"></i> Surprise me
+                </button>
             </div>
 
             <div class="projects-grid">
 
-                <div class="project-card" data-project="bufopedia">
-                    <a href="https://bufopedia.com" target="_blank">
-                        <img class="project-image" src="images/bufopedia.png" alt="Bufopedia" />
+                <article class="project-card note-green" style="--tilt: -1.4deg; --i: 0" data-project="bufopedia">
+                    <span class="tape" aria-hidden="true"></span>
+                    <a class="project-shot" href="https://bufopedia.com" target="_blank" rel="noopener" tabindex="-1">
+                        <img src="images/bufopedia.png" alt="Bufopedia" />
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://bufopedia.com" target="_blank">Bufopedia</a></h3>
+                        <h3><a href="https://bufopedia.com" target="_blank" rel="noopener">Bufopedia</a></h3>
                         <p>Browse 1,610+ iconic bufos sourced from the community collection</p>
                     </div>
-                    <div class="vote-section">
-                        <button class="vote-btn" onclick="upvote('bufopedia')">
+                    <div class="project-meta">
+                        <a class="project-domain" href="https://bufopedia.com" target="_blank" rel="noopener">bufopedia.com <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <button class="vote-btn" type="button" data-vote="bufopedia" aria-label="Upvote Bufopedia">
                             <i class="fa-solid fa-arrow-up"></i>
                             <span class="vote-count" id="count-bufopedia">0</span>
                         </button>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-project="inspireupon">
-                    <a href="https://inspireupon.com" target="_blank">
-                        <img class="project-image" src="images/inspireupon.png" alt="InspireUpon" />
+                <article class="project-card note-tan" style="--tilt: 1.1deg; --i: 1" data-project="inspireupon">
+                    <span class="tape" aria-hidden="true"></span>
+                    <a class="project-shot" href="https://inspireupon.com" target="_blank" rel="noopener" tabindex="-1">
+                        <img src="images/inspireupon.png" alt="InspireUpon" />
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://inspireupon.com" target="_blank">InspireUpon</a></h3>
+                        <h3><a href="https://inspireupon.com" target="_blank" rel="noopener">InspireUpon</a></h3>
                         <p>Discover legendary sports moments — 100 iconic comebacks, clutch plays & inspirational stories</p>
                     </div>
-                    <div class="vote-section">
-                        <button class="vote-btn" onclick="upvote('inspireupon')">
+                    <div class="project-meta">
+                        <a class="project-domain" href="https://inspireupon.com" target="_blank" rel="noopener">inspireupon.com <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <button class="vote-btn" type="button" data-vote="inspireupon" aria-label="Upvote InspireUpon">
                             <i class="fa-solid fa-arrow-up"></i>
                             <span class="vote-count" id="count-inspireupon">0</span>
                         </button>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-project="signingpics">
-                    <a href="https://www.signing.pics" target="_blank">
-                        <img class="project-image" src="images/signingpics.png" alt="Signing.pics" />
+                <article class="project-card note-blue" style="--tilt: -0.8deg; --i: 2" data-project="signingpics">
+                    <span class="tape" aria-hidden="true"></span>
+                    <a class="project-shot" href="https://www.signing.pics" target="_blank" rel="noopener" tabindex="-1">
+                        <img src="images/signingpics.png" alt="Signing.pics" />
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://www.signing.pics" target="_blank">Signing.pics</a></h3>
+                        <h3><a href="https://www.signing.pics" target="_blank" rel="noopener">Signing.pics</a></h3>
                         <p>Create stunning announcement images for your new job, internship, or school acceptance</p>
                     </div>
-                    <div class="vote-section">
-                        <button class="vote-btn" onclick="upvote('signingpics')">
+                    <div class="project-meta">
+                        <a class="project-domain" href="https://www.signing.pics" target="_blank" rel="noopener">signing.pics <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <button class="vote-btn" type="button" data-vote="signingpics" aria-label="Upvote Signing.pics">
                             <i class="fa-solid fa-arrow-up"></i>
                             <span class="vote-count" id="count-signingpics">0</span>
                         </button>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-project="earthquake">
-                    <a href="https://earthquake.wtf" target="_blank">
-                        <img class="project-image" src="images/earthquake.png" alt="Earthquake WTF" />
+                <article class="project-card note-tan" style="--tilt: 1.3deg; --i: 3" data-project="earthquake">
+                    <span class="tape" aria-hidden="true"></span>
+                    <a class="project-shot" href="https://earthquake.wtf" target="_blank" rel="noopener" tabindex="-1">
+                        <img src="images/earthquake.png" alt="Earthquake WTF" />
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://earthquake.wtf" target="_blank">Earthquake WTF</a></h3>
+                        <h3><a href="https://earthquake.wtf" target="_blank" rel="noopener">Earthquake WTF</a></h3>
                         <p>Wait... was that an earthquake? Real-time earthquake detection and alerts</p>
                     </div>
-                    <div class="vote-section">
-                        <button class="vote-btn" onclick="upvote('earthquake')">
+                    <div class="project-meta">
+                        <a class="project-domain" href="https://earthquake.wtf" target="_blank" rel="noopener">earthquake.wtf <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <button class="vote-btn" type="button" data-vote="earthquake" aria-label="Upvote Earthquake WTF">
                             <i class="fa-solid fa-arrow-up"></i>
                             <span class="vote-count" id="count-earthquake">0</span>
                         </button>
                     </div>
-                </div>
+                </article>
 
-                <div class="project-card" data-project="courtrenter">
-                    <a href="https://courtrenter.com" target="_blank">
-                        <img class="project-image" src="images/courtrenter.png" alt="CourtRenter" />
+                <article class="project-card note-blue" style="--tilt: -1.1deg; --i: 4" data-project="courtrenter">
+                    <span class="tape" aria-hidden="true"></span>
+                    <a class="project-shot" href="https://courtrenter.com" target="_blank" rel="noopener" tabindex="-1">
+                        <img src="images/courtrenter.png" alt="CourtRenter" />
                     </a>
                     <div class="project-info">
-                        <h3><a href="https://courtrenter.com" target="_blank">CourtRenter</a></h3>
+                        <h3><a href="https://courtrenter.com" target="_blank" rel="noopener">CourtRenter</a></h3>
                         <p>Find and book sports courts near you</p>
                     </div>
-                    <div class="vote-section">
-                        <button class="vote-btn" onclick="upvote('courtrenter')">
+                    <div class="project-meta">
+                        <a class="project-domain" href="https://courtrenter.com" target="_blank" rel="noopener">courtrenter.com <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                        <button class="vote-btn" type="button" data-vote="courtrenter" aria-label="Upvote CourtRenter">
                             <i class="fa-solid fa-arrow-up"></i>
                             <span class="vote-count" id="count-courtrenter">0</span>
                         </button>
                     </div>
-                </div>
+                </article>
+
+                <a class="next-card" style="--i: 5" href="https://x.com/mattbergland" target="_blank" rel="noopener">
+                    <i class="fa-solid fa-flask next-icon" aria-hidden="true"></i>
+                    <h3>Something's cooking</h3>
+                    <p>The next one is in the works. Follow along on X to see it first.</p>
+                </a>
 
             </div>
 
-            <div class="total-votes-bar">
-                <div class="total-label">
-                    <i class="fa-solid fa-fire"></i>
-                    <span id="total-votes">0</span> total votes
-                </div>
+            <div class="vote-tally" aria-live="polite">
+                <div class="tally-dots" id="tallyDots" aria-hidden="true"></div>
+                <p class="tally-text" id="tallyText">No upvotes yet. No pressure.</p>
             </div>
         </section>
     </main>
@@ -308,34 +614,110 @@
 
     <script>
         // Voting stored in localStorage only (no backend needed)
-        var votes = JSON.parse(localStorage.getItem('projectVotes') || '{}');
-        var voted = JSON.parse(localStorage.getItem('projectVoted') || '{}');
+        (function() {
+            var votes = JSON.parse(localStorage.getItem('projectVotes') || '{}');
+            var voted = JSON.parse(localStorage.getItem('projectVoted') || '{}');
+            var cards = Array.prototype.slice.call(document.querySelectorAll('.project-card'));
+            var dots = document.getElementById('tallyDots');
+            var tallyText = document.getElementById('tallyText');
+            var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-        function updateUI() {
-            var total = 0;
-            var cards = document.querySelectorAll('.project-card');
-            cards.forEach(function(card) {
-                var id = card.dataset.project;
-                var count = votes[id] || 0;
-                total += count;
-                var el = document.getElementById('count-' + id);
-                if (el) el.textContent = count;
-                var btn = card.querySelector('.vote-btn');
-                if (btn && voted[id]) btn.classList.add('voted');
+            cards.forEach(function() { dots.appendChild(document.createElement('span')); });
+
+            function tallyMessage(n, total) {
+                if (n === 0) return 'No upvotes yet. No pressure.';
+                if (n === total) return 'You upvoted all ' + total + '. Legend.';
+                if (n === 1) return '1 of ' + total + ' upvoted. A person of taste.';
+                return n + ' of ' + total + ' upvoted. Keep going?';
+            }
+
+            function save() {
+                localStorage.setItem('projectVotes', JSON.stringify(votes));
+                localStorage.setItem('projectVoted', JSON.stringify(voted));
+            }
+
+            function updateUI() {
+                var mine = 0;
+                cards.forEach(function(card) {
+                    var id = card.dataset.project;
+                    var btn = card.querySelector('.vote-btn');
+                    document.getElementById('count-' + id).textContent = votes[id] || 0;
+                    btn.classList.toggle('voted', !!voted[id]);
+                    btn.setAttribute('aria-pressed', voted[id] ? 'true' : 'false');
+                    if (voted[id]) mine++;
+                });
+                Array.prototype.forEach.call(dots.children, function(dot, i) {
+                    dot.classList.toggle('on', i < mine);
+                });
+                tallyText.textContent = tallyMessage(mine, cards.length);
+            }
+
+            function toggleVote(btn) {
+                var id = btn.dataset.vote;
+                if (voted[id]) {
+                    votes[id] = Math.max(0, (votes[id] || 1) - 1);
+                    delete voted[id];
+                } else {
+                    votes[id] = (votes[id] || 0) + 1;
+                    voted[id] = true;
+                    if (!reduceMotion) {
+                        btn.classList.remove('pop');
+                        void btn.offsetWidth;
+                        btn.classList.add('pop');
+                        var plus = document.createElement('span');
+                        plus.className = 'plus-one';
+                        plus.textContent = '+1';
+                        btn.appendChild(plus);
+                        setTimeout(function() { plus.remove(); }, 800);
+                    }
+                }
+                save();
+                updateUI();
+            }
+
+            document.querySelectorAll('.vote-btn').forEach(function(btn) {
+                btn.addEventListener('click', function() { toggleVote(btn); });
             });
-            document.getElementById('total-votes').textContent = total;
-        }
 
-        function upvote(projectId) {
-            if (voted[projectId]) return;
-            votes[projectId] = (votes[projectId] || 0) + 1;
-            voted[projectId] = true;
-            localStorage.setItem('projectVotes', JSON.stringify(votes));
-            localStorage.setItem('projectVoted', JSON.stringify(voted));
+            // Surprise me: roulette through the cards and land on one
+            var surprise = document.getElementById('surpriseBtn');
+            var last = -1;
+            surprise.addEventListener('click', function() {
+                var pick;
+                do { pick = Math.floor(Math.random() * cards.length); } while (cards.length > 1 && pick === last);
+                last = pick;
+                cards.forEach(function(c) { c.classList.remove('is-spotlight'); });
+
+                function land() {
+                    cards.forEach(function(c) { c.classList.remove('is-spotlight'); });
+                    var card = cards[pick];
+                    card.classList.add('is-spotlight');
+                    card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+                    card.querySelector('.project-info h3 a').focus({ preventScroll: true });
+                    surprise.disabled = false;
+                }
+
+                if (reduceMotion) { land(); return; }
+
+                surprise.disabled = true;
+                var steps = cards.length * 2 + pick + 1;
+                var i = 0;
+                (function tick() {
+                    cards.forEach(function(c) { c.classList.remove('is-spotlight'); });
+                    cards[i % cards.length].classList.add('is-spotlight');
+                    i++;
+                    if (i >= steps) { land(); return; }
+                    setTimeout(tick, 60 + Math.pow(i / steps, 3) * 260);
+                })();
+            });
+
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('#surpriseBtn')) return;
+                cards.forEach(function(c) { c.classList.remove('is-spotlight'); });
+            });
+
             updateUI();
-        }
-
-        updateUI();
+        })();
     </script>
 
     <script>

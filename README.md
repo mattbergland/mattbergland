@@ -1,6 +1,6 @@
 # mattberg.land Website
 
-A minimalist and clean personal website showcasing startup ideas and resources.
+Personal site of Matt Bergland: community, field, events, and side projects.
 
 ## Features
 
