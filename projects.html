@@ -115,7 +115,7 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 10px 24px -12px rgba(0, 0, 0, 0.18);
             transform: rotate(var(--tilt));
             transition: transform 0.35s cubic-bezier(.34, 1.56, .64, 1), box-shadow 0.25s ease;
-            animation: drop-in 0.6s cubic-bezier(.34, 1.4, .64, 1) both;
+            animation: drop-in 0.6s cubic-bezier(.34, 1.4, .64, 1) backwards;
             animation-delay: calc(var(--i, 0) * 80ms);
         }
 
@@ -334,7 +334,7 @@
             opacity: 0.75;
             transform: rotate(1deg);
             transition: opacity 0.2s ease, transform 0.35s cubic-bezier(.34, 1.56, .64, 1), border-color 0.2s ease;
-            animation: drop-in 0.6s cubic-bezier(.34, 1.4, .64, 1) both;
+            animation: drop-in 0.6s cubic-bezier(.34, 1.4, .64, 1) backwards;
             animation-delay: calc(var(--i, 0) * 80ms);
             --tilt: 1deg;
         }
@@ -682,6 +682,14 @@
             // Surprise me: roulette through the cards and land on one
             var surprise = document.getElementById('surpriseBtn');
             var last = -1;
+            var rouletteTimer = null;
+
+            function stopRoulette() {
+                clearTimeout(rouletteTimer);
+                rouletteTimer = null;
+                surprise.disabled = false;
+            }
+
             surprise.addEventListener('click', function() {
                 var pick;
                 do { pick = Math.floor(Math.random() * cards.length); } while (cards.length > 1 && pick === last);
@@ -694,7 +702,7 @@
                     card.classList.add('is-spotlight');
                     card.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
                     card.querySelector('.project-info h3 a').focus({ preventScroll: true });
-                    surprise.disabled = false;
+                    stopRoulette();
                 }
 
                 if (reduceMotion) { land(); return; }
@@ -707,12 +715,13 @@
                     cards[i % cards.length].classList.add('is-spotlight');
                     i++;
                     if (i >= steps) { land(); return; }
-                    setTimeout(tick, 60 + Math.pow(i / steps, 3) * 260);
+                    rouletteTimer = setTimeout(tick, 60 + Math.pow(i / steps, 3) * 260);
                 })();
             });
 
             document.addEventListener('click', function(e) {
                 if (e.target.closest('#surpriseBtn')) return;
+                stopRoulette();
                 cards.forEach(function(c) { c.classList.remove('is-spotlight'); });
             });
 
